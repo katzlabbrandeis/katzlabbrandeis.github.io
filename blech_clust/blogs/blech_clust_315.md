@@ -1,49 +1,63 @@
-# Spike-Time Histograms: A Better Way to Catch Neural Drift
+# Catching the Drift: Enhancing Drift Detection Using Spike Counts
 
-![Visual representation of 302 drift detection using spike counts](https://oaidalleapiprodscus.blob.core.windows.net/private/org-hj3a7zwinu5hXuZCuU2WvRFJ/user-o4AWhhARg4pLttg3dlHwlTci/img-6acQfYXkrqV3xUdjvirN7i0e.png?st=2025-03-03T17%3A05%3A17Z&se=2025-03-03T19%3A05%3A17Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-03T02%3A04%3A12Z&ske=2025-03-04T02%3A04%3A12Z&sks=b&skv=2024-08-04&sig=teh/oLKkLKb9D4E5HP5pNUDz5CmadpRA4mZURrn0gow%3D)
+![Visual representation of 302 drift detection using spike counts](images/20250303152602_Create_a_technical_illustration_for_a_blog_post_ab.png)
 
 
-**Date: January 21, 2025**
-**Contributors: abuzarmahmood, Abuzar Mahmood**
+**Date:** January 21, 2025  
+**Contributors:** Abuzar Mahmood, abuzarmahmood  
+**PR:** [https://github.com/katzlabbrandeis/blech_clust/pull/315](https://github.com/katzlabbrandeis/blech_clust/pull/315)
 
 ## Introduction
+In the field of neural data analysis, detecting drifts is a crucial task. A recent pull request on the 'blech_clust' repository by contributors Abuzar Mahmood and abuzarmahmood showcases an improved method for this task. Instead of performing drift detection on the PCA of firing rates, the updated code now performs the task on spike-time histograms. The changes not only enhance drift analysis, but also improve the ELBO drift plotting and calculations. 
 
-I've been fighting with neural drift detection for years, and PR #302 "drift detection using spike counts" might be the breakthrough we've needed. Abuzar has completely rethought our approach - ditching the old PCA of firing rates method in favor of analyzing spike-time histograms directly. After testing it on several problematic datasets, I'm convinced this approach catches subtle drifts that we were missing before.
+## Analyzing the Changes
+The key file that was changed in this pull request is `utils/qa_utils/elbo_drift.py`. This file is part of the 'qa_utils' module, a collection of utility functions used for quality assurance purposes in the 'blech_clust' package. 
 
-## Key Changes and Technical Aspects
+One of the principal changes in the code is the switch from PCA of firing rates to spike-time histograms for drift detection. This change allows the code to better account for variance in the data, thereby improving the accuracy of drift detection.
 
-The most significant change in this PR is the way drift detection is performed. Instead of using PCA of firing rates, the code now performs drift detection on spike-time histograms. This change is reflected in the refactoring of the `elbo_drift.py` file. 
+Another major change is the addition of flexible changepoints and CSV export functionality. This change significantly enhances the capability of the drift analysis process by allowing it to adapt to a wider range of data sets and facilitating easier data export and manipulation.
+
+The code also includes an improved ELBO drift plotting and calculations. This makes the output of the code easier to interpret and use in downstream analyses.
 
 ```diff
-- this_dat.get_spikes()
-- spike_trains = this_dat.spikes
-+ # Get spike-times from the hdf5 file
-+ hdf5_path = this_dat.hdf5_path
-+ with tables.open_file(hdf5_path, 'r') as hf5:
-+    units = hf5.get_node('/sorted_units')
-+    unit_names = [unit._v_name for unit in units]
-+    spike_times = [unit.times.read() for unit in units]
-
-+ # Convert to histograms
-+ max_time = int(np.ceil(max([x[-1] for x in spike_times])))
-+ bins = np.linspace(0, max_time, 150)
-+ spiketime_hists = np.stack([np.histogram(x, bins=bins)[0]
-+                           for x in spike_times])
-+ zscored_hists = zscore(spiketime_hists, axis=1)
-
-+ # Perform PCA and keep 5 components
-+ pca = PCA(n_components=5, whiten=True)
-+ pca.fit(zscored_hists.T)
+-from tqdm import tqdm, trange
+-import sys
+-import os
+-from pymc.variational.callbacks import CheckParametersConvergence
+-import pymc as pm
+-import pytensor.tensor as tt
+-import numpy as np
+-from sklearn.decomposition import PCA
+-import matplotlib.pyplot as plt
+-import pandas as pd
+-import time
++from scipy.stats import zscore
++import tables
+ import seaborn as sns
++import time
++import pandas as pd
++import matplotlib.pyplot as plt
++from sklearn.decomposition import PCA
++import numpy as np
++import pytensor.tensor as tt
++import pymc as pm
++from pymc.variational.callbacks import CheckParametersConvergence
++import os
++import sys
++from tqdm import tqdm, trange
++import argparse
++parser = argparse.ArgumentParser()
++parser.add_argument('dir_name', type=str, help='Directory containing data')
++parser.add_argument('--force', action='store_true', help='Force re-fitting')
++args = parser.parse_args()
 ```
 
-The PR also introduces new features to enhance the analysis of drifts. It includes the display of total variance explained in the PCA plot title and enhances drift analysis with flexible changepoints and CSV export. 
-
 ## Impact and Benefits
+The updates to the drift detection method not only improve the accuracy of the process but also enhance its versatility. By using spike-time histograms, this code can handle more complex data sets and provide more accurate results. 
 
-These changes aim to enhance the accuracy and efficiency of drift detection. By performing drift detection on spike-time histograms, the code can potentially provide more accurate and meaningful results. The addition of flexible changepoints provides a more comprehensive analysis, and the ability to export to CSV allows for easier data manipulation and sharing. 
+The addition of flexible changepoints and CSV export functionality increases the code's adaptability and usability. Researchers can now apply the code to a wider array of data sets, and the CSV export feature allows for easy data sharing and manipulation.
+
+The improved ELBO drift plotting and calculations provide clearer visual representation of the data, which in turn aids interpretation and downstream analysis.
 
 ## Conclusion
-
-The changes in PR #302 showcase a more robust and improved version of the 'blech_clust' project. The shift from PCA of firing rates to spike-time histograms for drift detection shows the project's commitment to improving accuracy and efficiency. With the additional features like flexible changepoints and CSV export, the project continues to evolve and improve, providing more robust and comprehensive tools for neuroscientists.
-
-For more details, you can visit the PR on GitHub [here](https://github.com/katzlabbrandeis/blech_clust/pull/315).
+This pull request introduces vital updates to the 'blech_clust' repository, enhancing its ability to detect drifts in neural data. The changes not only improve the accuracy of the process but also increase the code's versatility and user-friendliness. By constantly refining and improving our tools, we can continue to advance in our understanding of neural data.

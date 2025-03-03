@@ -1,44 +1,58 @@
-# Bayesian GMMs: The Auto-Clustering Upgrade We've Been Waiting For
+# Automating Clustering: A Leap in Data Processing 
 
-![Visual representation of 26 auto clustering](https://oaidalleapiprodscus.blob.core.windows.net/private/org-hj3a7zwinu5hXuZCuU2WvRFJ/user-o4AWhhARg4pLttg3dlHwlTci/img-LFQqIlMNvt74b8e4dEDtpNrI.png?st=2025-03-03T16%3A56%3A11Z&se=2025-03-03T18%3A56%3A11Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-03T02%3A20%3A55Z&ske=2025-03-04T02%3A20%3A55Z&sks=b&skv=2024-08-04&sig=P4m9QqpwWMdW717doK%2BFrh4ajm8lWPnmWyrSySgfvug%3D)
+![Visual representation of 26 auto clustering](images/20250303151335_Create_a_technical_illustration_for_a_blog_post_ab.png)
 
 
-**Date: December 07, 2023**  
+**Date: December 07, 2023**
+
 **Contributors: Abuzar Mahmood, abuzarmahmood**
+
+**PR: [https://github.com/katzlabbrandeis/blech_clust/pull/127](https://github.com/katzlabbrandeis/blech_clust/pull/127)**
 
 ## Introduction
 
-I've been manually tweaking cluster parameters for years, and I'm thrilled to report that those days might finally be behind us. PR #26 "auto clustering" just landed in the blech_clust repo, and it's completely transformed how I approach post-processing. The secret sauce? Bayesian Gaussian Mixture Models that adapt to your data in ways regular GMMs just can't match.
+This blog post highlights the significant changes made to the `blech_clust` project, which aims to simplify and automate the process of data clustering. The changes were made in a pull request (PR) titled "26 auto clustering", authored by Abuzar Mahmood and abuzarmahmood. The PR was created on December 7, 2023. 
 
 ## Key Technical Aspects
 
-This update is centered around the integration of Bayesian Gaussian Mixture Models (BGMMs) into the blech_process script, as an alternative to regular Gaussian Mixture Models (GMMs). BGMMs are a powerful tool for data clustering and this integration adds a new level of sophistication to our auto-sorting capabilities.
+The PR introduces various changes across five different files, with the most notable modification being the introduction of an automated sorting script. The changes include working versions of auto-sorting and auto-sort steps, integration of Bayesian Gaussian Mixture (BGM) as an alternative to regular Gaussian Mixture Model (GMM) in `blech_process`, and bug fixes.
 
-Here's a snapshot of the new additions to the `blech_run_auto_process.py` file:
+Here is a glimpse of how the new automated sorting script looks like:
 
 ```python
-+from sklearn.mixture import BayesianGaussianMixture as BGM
-...
-+"""
-+Script to automatically post-process blech data.
-+
-+Autoclustering will be done using Bayesian Gaussian Mixture Models (BGMMs)
-+from scikit-learn.
-+"""
-```
+# Get directory where the hdf5 file sits, and change to that directory
+# Get name of directory with the data files
+# Create argument parser
+parser = argparse.ArgumentParser(
+        description = 'Spike extraction and sorting script')
+parser.add_argument('--dir-name',  '-d', 
+                    help = 'Directory containing data files')
+parser.add_argument('--show-plot', '-p', 
+        help = 'Show waveforms while iterating (True/False)', default = 'True')
+parser.add_argument('--sort-file', '-f', help = 'CSV with sorted units',
+                    default = None)
+args = parser.parse_args()
 
-The changes also include minor bug fixes and improvements to enhance the overall performance. For example, the numbering of clusters for BGM has been fixed and the selection of arbitrary cluster numbers has been allowed.
+##############################
+# Instantiate sort_file_handler
+this_sort_file_handler = post_utils.sort_file_handler(args.sort_file)
+
+if args.dir_name is not None: 
+    metadata_handler = imp_metadata([[],args.dir_name])
+else:
+    metadata_handler = imp_metadata([])
+```
 
 ## Impact and Benefits
 
-Incorporating BGMMs into the auto-sorting step provides several advantages over regular GMMs. BGMMs are more flexible, allowing for a better fit to the data and ultimately leading to more accurate clustering results. This accuracy will significantly enhance our data post-processing capabilities, ultimately improving the quality of our research outputs.
+The introduction of auto-sorting and auto-sort steps is an important development in the project. This feature not only simplifies the clustering process but also reduces chances of erroneous results due to human error. 
 
-In addition, the selection of arbitrary cluster numbers promotes flexibility in our data analysis. This can be particularly useful when we want to experiment with different numbers of clusters to see how it affects our results.
+Furthermore, by integrating Bayesian Gaussian Mixture as an alternative to regular GMM in `blech_process`, the project now offers more robust and flexible modeling capabilities. This integration broadens the range of use-cases `blech_clust` can effectively handle.
 
-Moreover, the bug fixes enhance the stability of our system, ensuring a smoother user experience.
+Moreover, the bug fixes and modifications in this PR improve the overall stability and efficiency of the project. For instance, the PR allows selection of arbitrary cluster numbers, which provides users with greater flexibility when using `blech_clust`.
 
 ## Conclusion
 
-The "26 auto clustering" PR is a significant step forward for our blech_clust repository. The introduction of Bayesian Gaussian Mixture Models and the flexibility to select arbitrary cluster numbers have greatly enhanced our auto-sorting capabilities. This update, along with the bug fixes, opens up new possibilities for our data post-processing and analysis. We look forward to seeing the impact of these changes on our future work.
+This PR marks a significant step forward for `blech_clust`, enhancing its efficiency, flexibility, and reliability. The integration of auto-sorting and Bayesian Gaussian Mixture models, alongside other bug fixes and improvements, provides users with a more robust and versatile tool for their data clustering needs. 
 
-Check out the full changes on our [GitHub repository](https://github.com/katzlabbrandeis/blech_clust/pull/127).
+As the `blech_clust` project continues to evolve and improve, we look forward to seeing further enhancements and innovations that will continue to simplify and streamline the data clustering process.

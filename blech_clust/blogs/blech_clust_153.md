@@ -1,47 +1,40 @@
-# EMG Pipeline Overhaul: Separating Outputs by Dig-In
+# Streamlining the EMG Pipeline in the Blech Clust Project
 
-![Visual representation of 148 separate emg outputs in hdf5 by dig in](https://oaidalleapiprodscus.blob.core.windows.net/private/org-hj3a7zwinu5hXuZCuU2WvRFJ/user-o4AWhhARg4pLttg3dlHwlTci/img-xWgnphtCnctLprayxZxXQeqm.png?st=2025-03-03T16%3A57%3A35Z&se=2025-03-03T18%3A57%3A35Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-03T02%3A13%3A36Z&ske=2025-03-04T02%3A13%3A36Z&sks=b&skv=2024-08-04&sig=w/GRL5UFcepoclyl/M/uAaQbT1jua1K7%2B7f%2BYHZpDAA%3D)
-
-
-**Date: February 21, 2024**
-**Contributors: GitHub, abuzarmahmood, Abuzar Mahmood**
+**Date**: February 21, 2024  
+**Contributors**: GitHub, Abuzar Mahmood, abuzarmahmood  
+**PR**: [https://github.com/katzlabbrandeis/blech_clust/pull/153](https://github.com/katzlabbrandeis/blech_clust/pull/153)
 
 ## Introduction
 
-Anyone who's worked with the EMG pipeline in `blech_clust` knows it's a critical component for our electrophysiological data analysis. On February 21, 2024, Abuzar Mahmood submitted a game-changing pull request titled `148 separate emg outputs in hdf5 by dig in` that fundamentally rethinks how we handle EMG data processing.
+A significant update has been made to the Electromyography (EMG) pipeline in the Blech Clust Project. This update simplifies the handling of trial metadata using dataframes and allows EMG data to be processed without chunking into tastes. The key contributor to this update is Abuzar Mahmood, who has made substantial changes to improve the functionality and accessibility of the project.
 
-## Key Technical Aspects
+![Image](https://github.com/abuzarmahmood/blech_clust/assets/12436309/3a44e1a7-af29-4f48-8aa1-427b3e983a81)
 
-The pull request witnessed changes in 23 files, with major additions and deletions in the `md`, `py`, and `sh` languages. The key files changed were `README.md`, `blech_clust.py`, `blech_make_arrays.py`, `blech_run_process.sh`, and `emg/emg_BSA_segmentation.py`.
+## Key Technical Changes
 
-One of the significant changes in the code is the separation of EMG output by dig-in and the processing of EMG data without breaking it down by taste or laser. This change simplifies the code by allowing uneven taste deliveries to be handled more efficiently.
+The changes introduced in this pull request are extensive, spanning 23 files with 1328 additions and 1748 deletions. The key files updated are: README.md, blech_clust.py, blech_make_arrays.py, blech_run_process.sh, and emg/emg_BSA_segmentation.py.
+
+One of the significant changes is the separation of EMG output by dig-in. This feature allows uneven taste deliveries, providing more flexibility in handling data.
+
+The code has also been simplified by processing EMG data without breaking it down by taste or laser. This simplification not only eases the handling of data but also enables better management of uneven trials.
 
 ```diff
--def create_spike_trains_for_digin(
--        taste_starts_cutoff,
--        dig_in_ind,
--        this_dig_in,
-+        this_starts,
-         durations,
-         sampling_rate_ms,
-         units,
-         hf5,
-         ){
-         spike_train = []
--        for this_start in this_dig_in: 
-+        for this_start in this_starts: 
+-        plt.axvline(dig_in_markers[1][marker], c='yellow', lw=2, alpha = 0.5)
+-plt.yticks(np.arange(len(dig_in_int)), dig_in_str)
++        plt.axvline(dig_in_markers[1][marker], c='yellow', lw=2, alpha = 0.5,
++                    zorder = -1)
++plt.yticks(np.arange(len(dig_in_str)), dig_in_str)
+ plt.title('Digital Inputs')
+ plt.xlabel('Time (s)')
+ plt.ylabel('Digital Input Channel')
 ```
 
-The new changes also include the creation of a `trial_info_frame` that contains all metadata associated with a trial. This change makes the metadata human-readable, thereby improving the usability of the data.
+The README.md file has been updated to provide better instruction and understanding for users. The workflow diagram has been updated, and a new dependency graph section has been added to aid users in understanding the flow of operations.
 
 ## Impact and Benefits
 
-These changes lead to several benefits:
-
-- **Simplification of Code**: By processing EMG data without chunking it into tastes, the code becomes simpler and easier to understand.
-- **Better Handling of Uneven Trials**: The ability to separate EMG data allows for better management of uneven taste deliveries.
-- **Improved Metadata Management**: The creation of `trial_info_frame` makes the handling of trial metadata much easier and user-friendly.
+The changes brought by this update significantly improve the project's efficiency and user-friendliness. By simplifying the handling of trial metadata and processing EMG data without chunking into tastes, the pipeline becomes more streamlined and easier to use. Furthermore, the human-readable output of a `trial_info_frame` containing all metadata associated with a trial greatly enhances the user experience.
 
 ## Conclusion
 
-This pull request represents a significant step forward in the development of the `blech_clust` project. The changes introduced by Abuzar Mahmood have not only improved the handling and processing of EMG data but have also significantly enhanced the overall usability of the code. The ability to handle uneven taste deliveries, coupled with the simplified code and improved metadata management, are notable improvements that will undoubtedly enhance the functionality and user experience of the project.
+The changes introduced by Abuzar Mahmood have undeniably made the Blech Clust Project more robust and user-friendly. By streamlining the EMG pipeline and improving documentation, this update ensures a smoother and more efficient user experience. This is a significant step forward for the project and sets a high standard for future updates.

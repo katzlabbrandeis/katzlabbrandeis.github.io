@@ -1,48 +1,60 @@
-# Goodbye Shell Scripts: EMG Setup Goes Pure Python
+# Streamlining EMG Dependencies Installation: A Dive into Python-Only Setup
 
-![Visual representation of 208 python only setup for emg](https://oaidalleapiprodscus.blob.core.windows.net/private/org-hj3a7zwinu5hXuZCuU2WvRFJ/user-o4AWhhARg4pLttg3dlHwlTci/img-Ix6ASmEPHWx5pc6xQjIC3vai.png?st=2025-03-03T16%3A59%3A04Z&se=2025-03-03T18%3A59%3A04Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-03T03%3A11%3A59Z&ske=2025-03-04T03%3A11%3A59Z&sks=b&skv=2024-08-04&sig=iWbBFy8NTgmMhivTAXwDzpbPgtbv7f1cU663k356nHA%3D)
+![Visual representation of 208 python only setup for emg](images/20250303151743_Create_a_technical_illustration_for_a_blog_post_ab.png)
 
 
-**Date:** August 24, 2024  
-**Contributors:** abuzarmahmood, Abuzar Mahmood
+**Date: August 24, 2024**
+
+**Contributors: abuzarmahmood, Abuzar Mahmood**
+
+**PR: [https://github.com/katzlabbrandeis/blech_clust/pull/211](https://github.com/katzlabbrandeis/blech_clust/pull/211)**
 
 ## Introduction
 
-If you've ever spent hours debugging environment issues with our EMG pipeline, I've got great news. PR #208 "python only setup for emg" just landed, and it completely eliminates those frustrating shell script dependencies. I've already tested it on three different systems, and the installation process is now smooth as butter. Let's look at what changed and why this is such a big improvement.
+In this blog post, we will be dissecting the changes made in pull request 208, titled 'Python only setup for emg.' The purpose of these changes is to enhance the installation of emg dependencies, a critical step in setting up the 'blech_clust' environment.
 
-## Key Changes
+## Key Technical Aspects
 
-Firstly, we have updated the way BSA requirements are installed. Instead of the previous method, we now use Conda to install BSA requirements. Conda is an open-source package management system and environment management system that runs on Windows, macOS, and Linux.
+The changes introduced in this PR are primarily focused on refining the setup process for EMG dependencies. The key modifications include:
+
+1. The installation of BSA requirements using conda.
+2. Refactoring of conda installs.
+3. An update to the `prefect_pipeline` to execute `emg-bash` in the current environment.
+4. A revamp of the README for EMG installation.
+
+A significant part of the code diff shows the changes made to the README file. The installation process is streamlined with the addition of `-y` flags to conda commands, which allows for automated confirmation. This change reduces the manual intervention required during the setup process.
+
+The installation of EMG (BSA) requirements has been added as an optional step, enhancing the flexibility of setup. This section also includes explicit instructions for setting up the channel priority to 'strict,' which is crucial for the successful installation of these requirements.
+
+## Impact and Benefits
+
+The changes brought about in this pull request significantly simplify the setup process. By introducing automation through the `-y` flags and tightening the conda installs, the chances of setup errors are substantially reduced. 
+
+Moreover, the inclusion of an optional step to install EMG (BSA) requirements provides flexibility to users. Those who need these requirements can easily install them, while those who don't can skip this step without any negative impact on the setup process.
+
+Furthermore, the update to `prefect_pipeline` to run `emg-bash` in the current environment eliminates the need for switching environments, making the process smoother and more efficient.
+
+## Code Examples
+
+Here is an example of the changes in the README.md file:
 
 ```diff
 -conda clean --all                                           # Removes unused packages and caches
+-conda create --name blech_clust python=3.8.13               # Create "blech_clust" environment with conda requirements
 +conda clean --all -y                                        # Removes unused packages and caches
 +conda create --name blech_clust python=3.8.13 -y            # Create "blech_clust" environment with conda requirements
- conda activate blech_clust                                  # Activate blech_clust environment
--bash conda_requirements_base.sh                             # Install main packages using conda/mamba
-+conda install -c conda-forge -y --file conda_requirements_base.txt # Install conda requirements
 ```
 
-Secondly, the `prefect_pipeline` has been updated to run emg-bash in the current environment. This change simplifies the process and reduces the chances of encountering issues related to environment differences.
+And here are the new optional steps added for the installation of EMG (BSA) requirements:
 
 ```diff
--def emg_jetstream_parallel(data_dir, use_emg_env = True):
-+def emg_jetstream_parallel(data_dir): 
-     script_name = 'bash blech_emg_jetstream_parallel.sh'
--    if use_emg_env:
--        conda_init = 'conda run -p ' + emg_env_path
--        full_str = ' '.join([conda_init, script_name])
--    else:
--        full_str = script_name
-+    full_str = script_name
++### Install EMG (BSA) requirements (OPTIONAL)
++# Tested with installation after neuRecommend requirements
++cd <path_to_blech_clust>/requirements                       # Move into blech_clust folder with requirements files
++conda config --set channel_priority strict                  # Set channel priority to strict, THIS IS IMPORTANT, flexible channel priority may not work
++bash emg_install.sh                                         # Install EMG requirements
 ```
-
-Finally, the README file has been updated to include instructions for the new installation process. The instructions are clear and easy to follow, providing users with a smooth onboarding experience.
-
-## Impact
-
-These changes will significantly simplify the process of setting up EMG dependencies. By reducing complexity, we hope to make it easier for both new and existing users to install and use our software. Further, by switching to a Python-only setup, we aim to reduce the potential for errors and improve the maintainability of our code.
 
 ## Conclusion
 
-Continual updates and improvements are vital for the growth and efficiency of a codebase. This recent pull request is a testament to our commitment to improving user experience and code efficiency. By simplifying the EMG dependencies installation process, we've taken another step towards enhancing our software's usability and maintainability.
+In conclusion, this pull request brings valuable improvements to the setup process for the 'blech_clust' environment. By simplifying the installation of the EMG dependencies, it reduces the potential for errors and streamlines the setup process, offering a smoother experience for users.

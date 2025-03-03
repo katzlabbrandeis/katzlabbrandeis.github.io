@@ -1,54 +1,39 @@
-# Finding Bridged Channels Just Got Easier
+# Bridging the Gap: Enhancing Channel Correlations with Blech Clust
 
-![Visual representation of 80 test for bridges channels](https://oaidalleapiprodscus.blob.core.windows.net/private/org-hj3a7zwinu5hXuZCuU2WvRFJ/user-o4AWhhARg4pLttg3dlHwlTci/img-4VydGryOkUU13raN8XaYIAj0.png?st=2025-03-03T16%3A54%3A41Z&se=2025-03-03T18%3A54%3A41Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-03T02%3A11%3A01Z&ske=2025-03-04T02%3A11%3A01Z&sks=b&skv=2024-08-04&sig=%2BOu6soV62Ebd3p8e6u23B0G4oxsv7bsth6G4VqZ6za8%3D)
+![Visual representation of 80 test for bridges channels](images/20250303151137_Create_a_technical_illustration_for_a_blog_post_ab.png)
 
 
-**Date: August 09, 2023**
-**Contributors: Abuzar Mahmood, abuzarmahmood**
+**Date:** August 09, 2023
+**Contributors:** Abuzar Mahmood, abuzarmahmood
+**PR:** [https://github.com/katzlabbrandeis/blech_clust/pull/86](https://github.com/katzlabbrandeis/blech_clust/pull/86)
 
-## Introduction
-If you've ever spent hours manually checking for bridged channels in your neural recordings, I've got good news. Abuzar's latest PR "80 test for bridges channels" just landed in Blech Clust, and it's a game-changer for our data quality checks. After struggling with this exact problem last month on a 128-channel recording, I wish I'd had this tool then!
+---
 
-## Technical Overview
-The pull request introduces a simple yet powerful addition to the `blech_clust.py` script. The changes allow the calculation of correlations between raw data, providing a robust method to check for bridged channels.
+In this blog post, we delve into an exciting pull request (PR) that has been recently made to the `blech_clust` repository. The PR titled "80 test for bridges channels" was created by contributor Abuzar Mahmood and included noteworthy code enhancements to the blech_clust.py file. The primary aim of these changes lies in calculating correlations between raw data to check for bridged channels. Bridged channels, in this context, are essentially channels that may have been unintentionally linked or 'bridged' due to various reasons such as hardware issues or signal interference, leading to similar readings and reducing the effective number of independent channels.
 
-The core of the changes centers around four key aspects:
-1. Scripts to calculate thresholds of correlation on raw data
-2. Working code to test for bridging
-3. Sorting of data by channel number
-4. Simplification of thresholding and plotting of correlation matrix
+The core of this PR lies in the scripts that have been added to calculate thresholds of correlation on raw data and the working code to test for bridging. The changes also include an update to sort data by channel number, a move aimed at organizing the data more efficiently. There's also a simplification of thresholding and plotting of the correlation matrix. These changes span across five files with 286 additions and 1 deletion.
 
-The changes spanned 5 files, with 286 lines of code added and only one line deleted. The code is primarily written in Python (py), with JSON used for certain data structures.
+Let's take a closer look at the key technical aspects of these changes.
 
-Let's dive into some of the changes:
+The `raw_channel_correlation_test.py` file has seen significant additions. It now includes a new function `intra_corr(X)` that takes a 2D data array `X` and calculates a correlation matrix. This is done using the `pearsonr` function from scipy's stats module which calculates a Pearson correlation coefficient and the p-value for testing non-correlation.
 
 ```python
-# Necessary blech_clust modules
-from utils import read_file
-from utils.blech_utils import entry_checker, imp_metadata
-from utils.blech_process_utils import path_handler
+def intra_corr(X):
+    inds = list(combinations(range(X.shape[0]), 2))
+    corr_mat = np.zeros((X.shape[0], X.shape[0]))
+    for i,j in inds:
+        corr_mat[i,j] = pearsonr(X[i,:], X[j,:])[0]
+        corr_mat[j,i] = corr_mat[i,j]
+    return corr_mat
 ```
-Here, the necessary modules are imported, including `read_file`, `entry_checker`, and `imp_metadata` from the `utils` package. The modules facilitate the reading and processing of raw data files.
+
+The correlation matrix is then used to identify potentially bridged channels. If the correlation between two channels is too high, it suggests that they might be bridged. The PR also introduces scripts to calculate thresholds of correlation on raw data, which would be instrumental in identifying such anomalies.
 
 ```python
-# Calculate correlations
-down_rate = 100
-corr_list = []
-for this_dir in tqdm(dir_list):
-    metadata_handler = imp_metadata([[], this_dir])
-    hdf5_name = metadata_handler.hdf5_name
-    with tables.open_file(hdf5_name, 'r+') as hf5: 
-        raw_elecs = hf5.list_nodes('/raw')
-        down_dat = [x[:][::down_rate] for x in raw_elecs]
-    corr_mat = intra_corr(np.vstack(down_dat))
-    corr_list.append(corr_mat)
+thresh_percentile = [np.round(np.percentile(flat_corr_list, x*100),3)\
+        for x in thresh_list]
 ```
-In this segment of the new code, the correlations between raw data are calculated. This is done by iterating through raw data directories, reading the data, and computing the intra-correlation matrix.
 
-## Impact and Benefits
-The changes brought about by this pull request have profound implications for the way we analyze neural data. By facilitating the calculation of correlations between raw data, a more in-depth analysis is made possible. The enhancements in the scripts for calculating thresholds and the simplified thresholding and plotting of the correlation matrix streamline the data analysis process, making it faster and more efficient.
+The impact of these changes is potentially far-reaching. By enabling the detection of bridged channels, the code can help in improving the accuracy of data analysis. It can also help in identifying potential hardware issues or signal interference that might be causing the bridging, thereby allowing for necessary corrective measures.
 
-The benefits extend not just to individual researchers, but also to the broader neuroscience community that relies on Blech Clust for data analysis. By ensuring that the data is sorted by channel number, the changes also improve the usability and understandability of the output, which is essential for collaborative projects.
-
-## Conclusion
-In conclusion, the pull request "80 test for bridges channels" brings significant enhancements to the Blech Clust project, improving the way correlations between raw data are calculated and analyzed. These changes represent a step forward in the ongoing mission to provide effective tools for the neuroscience community. They are a testament to the contributors' dedication and expertise in the field. The neuroscience community eagerly awaits more such improvements to further our understanding of the brain.
+This PR is another step forward in driving the robustness and reliability of the `blech_clust` repository. It exemplifies the continuous efforts by the contributors to improve and enhance the codebase. We look forward to seeing more such enriching contributions in the future.

@@ -1,21 +1,25 @@
-# Debugging Just Got 10x Easier with Comprehensive Logging
+# Boosting the Clarity of Blech Clust Scripts with Logging
 
-![Visual representation of 20 add logging for all scripts](https://oaidalleapiprodscus.blob.core.windows.net/private/org-hj3a7zwinu5hXuZCuU2WvRFJ/user-o4AWhhARg4pLttg3dlHwlTci/img-VQAqCRe12f20CIGRtx6QxkJN.png?st=2025-03-03T17%3A03%3A44Z&se=2025-03-03T19%3A03%3A44Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-03T02%3A22%3A16Z&ske=2025-03-04T02%3A22%3A16Z&sks=b&skv=2024-08-04&sig=asrdfvXvT2NSVAsapnfG5hTHQGI1NHhikpP0vrjMwq8%3D)
+![Visual representation of 20 add logging for all scripts](images/20250303152357_Create_a_technical_illustration_for_a_blog_post_ab.png)
 
 
-**Date: December 05, 2024** 
+**Date:** *December 05, 2024*
 
-**Contributors: Abuzar Mahmood, abuzarmahmood, Abuzar Mahmood (aider)** 
+**Contributors:** *Abuzar Mahmood (aider), abuzarmahmood, Abuzar Mahmood*
 
-## Introduction 
+**PR:** *[https://github.com/katzlabbrandeis/blech_clust/pull/266](https://github.com/katzlabbrandeis/blech_clust/pull/266)*
 
-Ever spent hours trying to figure out why your script crashed halfway through processing a 24-hour recording? I have, and it's maddening. That's why I'm so excited about Abuzar's latest PR "20 add logging for all scripts" that just landed in the `blech_clust` repo. This update has already saved me countless debugging hours by showing exactly what's happening under the hood.
+## Introduction
 
-## The Technical Changes 
+In the realm of software development, logging is a critical tool for monitoring and debugging applications. It provides valuable insights about the application's behavior and health in different environments. This blog post examines an important update to the Katz Lab's `blech_clust` project that integrates logging into all scripts.
 
-The key changes made in this PR revolve around the addition of the `Tee` class and the enhancement of log formatting. Let's delve into these changes: 
+## Changes Overview
 
-1. **Introduction of the `Tee` Class**: This class is designed to capture stdout/stderr and integrate it with `pipeline_graph_check`. The `Tee` class redirects both stdout and stderr to a log file and the console. This makes it easy to monitor the output of our scripts both in real-time and retrospectively.
+This update involved changes in two files: `blech_clust.py` and `utils/blech_utils.py`. The primary additions include the introduction of the `Tee` class to capture stdout/stderr and integrate it with `pipeline_graph_check`. Also, the formatting of log statements was improved to enhance readability.
+
+## Technical Highlights
+
+The `Tee` class, newly introduced in `utils/blech_utils.py`, is used to redirect the output to both stdout/stderr and a log file simultaneously. This capability is invaluable in scripts running in the background or processes launched via cron jobs, where the console output is not readily available.
 
 ```python
 class Tee:
@@ -29,27 +33,23 @@ class Tee:
         sys.stderr = self
     ...
 ```
-
-2. **Enhancement of log formatting**: The script’s logging statements have been modified to improve readability. For example, a message asking if the user wants to reload data is now formatted more neatly.
+In `blech_clust.py`, changes were made to replace print statements with log statements, enhancing the script's readability and clarity, especially when diagnosing issues.
 
 ```diff
-- print(f'Data already present: {found_list}')
-+ reload_msg = f'Data already present: {found_list}' + '\n' +\
-+              'Reload data? (yes/y/n/no) ::: '
+-            print(f'Data already present: {found_list}')
++            reload_msg = f'Data already present: {found_list}' + '\n' +\
++                        'Reload data? (yes/y/n/no) ::: '
+             reload_data_str, continue_bool = entry_checker(
+-                    msg='Reload data? (yes/y/n/no) ::: ',
++                    msg= reload_msg,
+                     check_func=lambda x: x in ['y', 'yes', 'n', 'no'],
+                     fail_response='Please enter (yes/y/n/no)')
 ```
 
-## The Impact 
+## Impact and Benefits
 
-These changes provide valuable benefits:
+Enhanced logging will significantly improve the debugging process and monitoring of the `blech_clust` scripts. It will provide developers with real-time visibility into the behavior of the scripts, making it easier to identify and rectify issues.
 
-- **Improved Debugging**: By capturing stdout/stderr, developers can now have access to detailed logs which can be instrumental in debugging issues quicker.
+## Conclusion
 
-- **Enhanced Monitoring**: The improved logging format helps in better understanding of the script execution flow and system health.
-
-- **User-Friendly Interaction**: The enhanced formatting of user prompts leads to a more user-friendly interaction.
-
-## Conclusion 
-
-In conclusion, this pull request serves as an excellent example of how improving logging capability can have a significant impact on the development, maintenance, and user experience of a project. The changes made by Abuzar Mahmood are a testament to how even small enhancements can lead to substantial improvements in software quality. 
-
-Remember, when it comes to software development, never underestimate the power of good logging!
+Incorporating logging into all scripts of the `blech_clust` project is a laudable improvement. It not only makes it easier to monitor the scripts but also provides valuable insights for debugging. This enhancement is a testament to the continuous efforts of the contributors to maintain high-quality, robust code.

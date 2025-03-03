@@ -1,54 +1,58 @@
-# Quality Control Gets an Upgrade: New Directory for QC Scripts in Blech Clust
+# Streamlining Quality Control: A peek into the latest code changes in Blech_clust
 
-![Visual representation of Create a directory for quality control scripts](https://oaidalleapiprodscus.blob.core.windows.net/private/org-hj3a7zwinu5hXuZCuU2WvRFJ/user-o4AWhhARg4pLttg3dlHwlTci/img-wE08XsAk64HjddkFPXa3fRqv.png?st=2025-03-03T16%3A55%3A32Z&se=2025-03-03T18%3A55%3A32Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-03T02%3A07%3A37Z&ske=2025-03-04T02%3A07%3A37Z&sks=b&skv=2024-08-04&sig=EoMbKs58E4yDBinglE%2Ba3EDTb7CbxGDqR3AwIw%2By6Kg%3D)
+![Visual representation of Create a directory for quality control scripts](images/20250303151235_Create_a_technical_illustration_for_a_blog_post_ab.png)
 
 
-**Date:** December 04, 2023
-
-**Contributors:** abuzarmahmood, Abuzar Mahmood, GitHub
+**Date: December 04, 2023**  
+**Contributors: abuzarmahmood, Abuzar Mahmood, GitHub**  
+**PR: [https://github.com/katzlabbrandeis/blech_clust/pull/125](https://github.com/katzlabbrandeis/blech_clust/pull/125)**
 
 ## Introduction
 
-The [blech_clust](https://github.com/katzlabbrandeis/blech_clust) repository just got a major upgrade with the addition of a dedicated directory for quality control scripts. This change, implemented on December 4th, 2023, brings much-needed organization to our QC processes. Now we can more efficiently handle critical tasks like checking unit similarity, spotting bridged channels through voltage correlations, and tracking unit activity drift over time.
+The Blech_clust project has undergone a significant update with the aim of enhancing its quality control processes. This blog post aims to explore these changes in detail, providing insights into what has been altered, why these changes were necessary, and how they will improve the overall quality and functionality of the codebase.
 
-## Key Technical Aspects of The Changes
+## Key Technical Aspects of the Changes
 
-The changes made in this pull request include reorganizing files into a new directory named `qa_utils`. This new organization makes it easier to navigate and manage the different quality assurance processes in the project. 
+The main highlight of this pull request (PR) is the creation of a new directory for quality control scripts. This modification aims to keep all scripts related to quality checks in one place, facilitating easier access and improving organization. 
 
-The updated code also includes new features for detecting drift and generating outputs. These changes are essential for maintaining the accuracy and integrity of the project's data.
+The changes include:
 
-Here's an example of how the code has changed in `blech_clust.py`:
+- Reorganizing files into a new 'qa_utils' directory.
+- Code adjustments to detect and generate outputs for drift in selected unit activity.
+- The addition of a line plot of binned firing.
+- Incorporation of similarity violations into a new schema.
+- Updating 'channel_corr' to work with the new organization.
+- Updating the testing pipeline to include quality assurance.
+- Overhauling the 'blech_clust' code to work with the new QA output directory.
+- Textual changes in the README file to reflect the new changes.
+- Minor fixes and updates in the README.md flowchart.
+- Loading all parameters for quality assurance from a params file.
 
-```diff
-@@ -199,12 +199,19 @@
- print('Calculating correlation matrix for quality check')
- qa_down_rate = all_params_dict["qa_params"]["downsample_rate"]
- qa_threshold = all_params_dict["qa_params"]["bridged_channel_threshold"]
--down_dat_stack, chan_names = qa.get_all_channels(
-+down_dat_stack, chan_names = channel_corr.get_all_channels(
-         hdf5_name, 
-         downsample_rate = qa_down_rate,)
--corr_mat = qa.intra_corr(down_dat_stack)
--qa.gen_corr_output(corr_mat, 
--                   dir_name, 
-+corr_mat = channel_corr.intra_corr(down_dat_stack)
-+qa_out_path = os.path.join(dir_name, 'QA_output')
-+if not os.path.exists(qa_out_path):
-+    os.mkdir(qa_out_path)
-+else:
-+    # Delete dir and remake
-+    shutil.rmtree(qa_out_path)
-+    os.mkdir(qa_out_path)
-+channel_corr.gen_corr_output(corr_mat, 
-+                   qa_out_path, 
-                    qa_threshold,)
+The changes made to the 'blech_clust.py' file are particularly noteworthy. The code has been modified to generate outputs for quality checks in a new directory 'QA_output'. If this directory already exists, the code deletes it and remakes it. This eliminates any chance of old, inaccurate data influencing the new quality checks.
+
+```python
+# Old Code
+corr_mat = qa.intra_corr(down_dat_stack)
+qa.gen_corr_output(corr_mat, dir_name, qa_threshold,)
+
+# New Code
+corr_mat = channel_corr.intra_corr(down_dat_stack)
+qa_out_path = os.path.join(dir_name, 'QA_output')
+if not os.path.exists(qa_out_path):
+    os.mkdir(qa_out_path)
+else:
+    # Delete dir and remake
+    shutil.rmtree(qa_out_path)
+    os.mkdir(qa_out_path)
+channel_corr.gen_corr_output(corr_mat, qa_out_path, qa_threshold,)
 ```
-Notably, the testing pipeline was updated to include quality assurance, further solidifying the role of quality control in the project.
 
-## The Impact of These Changes
+## Impact and Benefits of these Changes
 
-The creation of a new directory for quality control scripts brings about a more organized structure to the project, making it easier for contributors to locate and update quality control processes. 
+These changes are poised to bring significant improvements to the Blech_clust project. The creation of a dedicated directory for quality control scripts will make code management easier. This change, coupled with the reorganization of files, will improve the readability and maintainability of the codebase.
 
-Additionally, the updated code to detect drift and generate outputs provides a more effective way to handle potential issues in data quality. By allowing for early detection and remedy of these issues, the integrity of the project's data is preserved, leading to more reliable and accurate outcomes.
+Moreover, the modifications made for quality assurance, such as drift detection and similarity violation checks, will improve the reliability and accuracy of the data processed by Blech_clust. The ability of the updated code to remove and recreate the QA output directory ensures that quality checks are always based on the most recent and relevant data.
 
-In conclusion, this pull request represents a crucial step towards improving the quality control processes in the blech_clust project. It not only enhances the organization of the project but also provides valuable tools for maintaining the quality and integrity of the project's data. This update signifies a commitment to excellence and a dedication to providing the best possible tools for neuroscience research.
+## Conclusion
+
+The latest updates in the Blech_clust repository are a significant step towards enhancing the robustness and maintainability of the project. By placing a stronger emphasis on quality control and code organization, the contributors have ensured that the project is better equipped to handle future developments and challenges. As the project continues to evolve, further enhancements and robust quality checks will be key to maintaining the integrity of the project and its data.

@@ -1,48 +1,45 @@
-# Test Dataset Creation Just Got Easier: PR #278 Breakdown
+# A Revolutionary Framework for Test Dataset Creation: A Deep Dive into PR #282
 
-![Visual representation of 280 framework to create test dataset](https://oaidalleapiprodscus.blob.core.windows.net/private/org-hj3a7zwinu5hXuZCuU2WvRFJ/user-o4AWhhARg4pLttg3dlHwlTci/img-d7eYWNe4dz8r1yH6je1pi4fZ.png?st=2025-03-03T17%3A01%3A22Z&se=2025-03-03T19%3A01%3A22Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-03T02%3A14%3A56Z&ske=2025-03-04T02%3A14%3A56Z&sks=b&skv=2024-08-04&sig=yxCI/CxSEViA1GN/4rqe6wBU%2BtS37/BbrBv7EELl7VE%3D)
+![Visual representation of 280 framework to create test dataset](images/20250303152053_Create_a_technical_illustration_for_a_blog_post_ab.png)
 
 
-**Date: December 12, 2024**  
-**Contributors: Abuzar Mahmood (aider), abuzarmahmood, Abuzar Mahmood, GitHub**
+## Metadata
+**Date:** December 12, 2024  
+**Contributors:** GitHub, abuzarmahmood, Abuzar Mahmood, Abuzar Mahmood (aider)  
+**PR:** [https://github.com/katzlabbrandeis/blech_clust/pull/282](https://github.com/katzlabbrandeis/blech_clust/pull/282)  
 
 ## Introduction
+On December 12, 2024, a significant pull request, #282, titled "280 framework to create test dataset", was submitted to the Katz Lab Brandeis GitHub repository. Authored by Abuzar Mahmood, this pull request introduces significant optimizations to the `blech_clust` project, focusing on how user input is handled and streamlining the generation of test datasets.
 
-I've spent countless hours manually creating test datasets for our ML pipelines, and I bet you have too. It's tedious, error-prone work that nobody enjoys. That's why I was thrilled to see Abuzar Mahmood's [PR #278](https://github.com/katzlabbrandeis/blech_clust/pull/282) land in the `blech_clust` repo last week.
+This blog post aims to dissect this pull request, highlighting the key changes, their implications, and the benefits they bring to the `blech_clust` project.
 
-The big win? We can now run `blech_exp_info` programmatically with command line arguments. This might sound small, but it's a massive time-saver that completely transforms how we create and manage test datasets.
+## Key Technical Changes
+### 1. Introduction of `DigInHandler`
+A key change in this pull request is the creation of `DigInHandler`. This handler runs during `blech_exp_info.py` and records relevant information, including pulse starts and ends, which it then writes to `dig_in_frame.csv`. This mechanism eliminates the need for reloading dig-ins in `blech_clust.py` and `blech_make_arrays.py`, improving efficiency.
 
-## Key Technical Aspects
-
-The essential changes in PR #278 revolve around the creation of the `DigInHandler` and its integration into the `blech_exp_info.py` script. This handler records relevant information, including pulse starts and ends, and writes them to the `dig_in_frame.csv` file. This file is then used in `blech_clust.py` and `blech_make_arrays.py`, minimizing the need for reloading dig-ins.
-
-The `DigInHandler` also standardizes the numbering of dig-ins across file types, reducing potential confusion. Here is an example of the code changes in `blech_clust.py`:
-
-```diff
-diff --git a/blech_clust.py b/blech_clust.py
-index 8dcabf61..d0bd78b9 100644
---- a/blech_clust.py
-+++ b/blech_clust.py
-@@ -58,6 +58,7 @@
- import pandas as pd
- import shutil
- import pylab as plt
-+from ast import literal_eval
-...
-@@ -123,36 +124,6 @@ def initialize_groups(self):
-         self.hf5.close()
-         return continue_bool, reload_data_str
-...
+```python
+# Get digin and laser info
+print('Getting trial markers from digital inputs')
+this_dig_handler = read_file.DigInHandler(dir_name, file_type)
+this_dig_handler.load_dig_in_frame()
 ```
 
+### 2. Consolidation of Dig-in Numbering
+`DigInHandler` also consolidates the numbering of dig-ins across file types, minimizing confusion and the usage of `dig_in_inds`, opting instead for `dig_in_num`. This change is reflected in multiple parts of the code, enhancing clarity and consistency.
+
+### 3. Programmatic Input Support for `blech_exp_info.py`
+To allow `blech_exp_info.py` to be run programmatically using command-line arguments, input handling was modified. This development allows for more efficient testing and data generation.
+
+### 4. Bug Fixes and Optimizations
+A variety of bug fixes were implemented, including handling uneven dig-in trials, fixing version number syntax, and correcting the use of `tqdm`. Additionally, there were updates to handle different versions of scipy in `lfp_processing`.
+
 ## Impact and Benefits
+The changes introduced in PR #282 bring about significant improvements to the `blech_clust` project:
 
-The changes in PR #278 bring significant benefits, especially for users working with large datasets. By allowing `blech_exp_info` to be run programmatically, users can automate the creation of test datasets, saving valuable time and reducing the risk of error.
-
-The introduction of `DigInHandler` simplifies the handling of digital inputs, again saving time and reducing complexity for the user. By recording relevant information upfront, the need for continuous reloading of dig-ins is eliminated.
-
-The consolidation of dig-in numbering across file types is another key improvement, reducing potential confusion and making the code easier to read and understand.
+1. **Efficiency:** The changes streamline the creation of test datasets, reducing the need for repeated reloading of data.
+2. **Clarity:** The consolidation of dig-in numbering across file types and the consistent use of `dig_in_num` help eliminate confusion.
+3. **Usability:** Programmatic input support for `blech_exp_info.py` allows users to run it using command-line arguments, making it more user-friendly.
+4. **Reliability:** The various bug fixes and optimizations ensure a smoother and more reliable experience for users.
 
 ## Conclusion
-
-The changes made in PR #278 of the `blech_clust` repository showcase good software engineering practice, where efficiency, user-friendliness, and readability are key. By enabling programmatic running of `blech_exp_info`, the creation of test datasets is now more efficient. The introduction of `DigInHandler` and the consolidation of dig-in numbering across file types further simplify the user experience. This is a clear demonstration of how thoughtful code changes can have a significant impact on user experience and efficiency.
+Pull Request #282 marks a significant milestone in the `blech_clust` project. By introducing key changes such as the `DigInHandler` and programmatic input support, the project has taken substantial strides towards increased efficiency, clarity, and usability. As we move forward, we can expect these changes to enhance the overall user experience and pave the way for future enhancements in the `blech_clust` project.

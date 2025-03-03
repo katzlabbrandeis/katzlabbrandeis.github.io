@@ -1,43 +1,52 @@
-# New ephys_data Utility: Working with Electrophysiology Data Just Got Easier
+# Boosting Ephys Data Analysis with the New Utility Addition
 
-![Visual representation of Add ephys_data as a utility](https://oaidalleapiprodscus.blob.core.windows.net/private/org-hj3a7zwinu5hXuZCuU2WvRFJ/user-o4AWhhARg4pLttg3dlHwlTci/img-qmopUFqUQtedgWCEYz7u9lnR.png?st=2025-03-03T16%3A59%3A44Z&se=2025-03-03T18%3A59%3A44Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-03T02%3A19%3A11Z&ske=2025-03-04T02%3A19%3A11Z&sks=b&skv=2024-08-04&sig=waDQ5Xc6TxMY/JzZ5dMEYfFepoSomsHn00B4ntWwxmg%3D)
+![Visual representation of Add ephys_data as a utility](images/20250303151850_Create_a_technical_illustration_for_a_blog_post_ab.png)
 
 
 **Date:** August 29, 2024  
-**Contributors:** abuzarmahmood, Abuzar Mahmood 
+**Contributors:** Abuzar Mahmood, abuzarmahmood  
+**PR:** [https://github.com/katzlabbrandeis/blech_clust/pull/215](https://github.com/katzlabbrandeis/blech_clust/pull/215)
 
 ## Introduction
-After months of requests from lab members, we finally have a dedicated utility for handling electrophysiology data in Blech Clust! Abuzar's PR "Add ephys_data as a utility" landed yesterday, and it's already making my analysis workflow much smoother. The new module not only adds powerful functionality but also includes comprehensive documentation in the project roadmap.
+In our continuous efforts to improve the Blech Clust project, we have made some significant changes that warrant your attention. This blog post will detail the recent addition of the `ephys_data` utility, a change aimed to enhance the project's usability and functionality.
 
-## Key Aspects of the Changes
-The pull request involves the addition of a new module, ephys_data, which is now added as a utility in the Blech Clust project. This module has been incorporated into several key files, including BAKS.py, region_spectrogram_plot.py, and ephys_data.py, among others. 
+## Key Technical Aspects
+Primarily, the pull request incorporates the `ephys_data` utility into our codebase. This addition involved changes to 11 files, with 1939 lines added and no deletions. The impacted files are primarily in Python and Log languages.
 
-The changes include the addition of 1939 lines of code across 11 files, with no deletions. Notably, Python (py) and log are the primary languages used in these changes.
+The main files changed in this pull request include:
+- `utils/ephys_data/BAKS.py`
+- `utils/ephys_data/convenience_scripts/region_spectrogram_plot.py`
+- `utils/ephys_data/ephys_data.py`
+- `utils/ephys_data/lfp_processing.py`
+- `utils/ephys_data/project.log`
 
-Here's a snippet of the changes made to the BAKS.py file:
+Among the changes, one crucial update was made to the `ephys_data` utility's `BAKS.py` file. Here's a snippet of the updated code:
 
-```diff
-diff --git a/utils/ephys_data/BAKS.py b/utils/ephys_data/BAKS.py
-new file mode 100755
-index 00000000..6a81d6fc
---- /dev/null
-+++ b/utils/ephys_data/BAKS.py
-@@ -0,0 +1,32 @@
-+"""
-+Python implementation of BAKS from 10.1371/journal.pone.0206794
-+"""
-+
-+import numpy as np
-+import scipy.special 
-+...
+```python
+"""
+Python implementation of BAKS from 10.1371/journal.pone.0206794
+"""
+import numpy as np
+import scipy.special 
+
+def BAKS(SpikeTimes, Time):
+    N = len(SpikeTimes)
+    a = float(4)
+    b = float(N**0.8)
+    sumnum = float(0); sumdenum = float(0)
+    
+    for i in range(N):
+        numerator = (((Time-SpikeTimes[i])**2)/2 + 1/b)**(-a)
+        denumerator = (((Time-SpikeTimes[i])**2)/2 + 1/b)**(-a-0.5)
+        sumnum = sumnum + numerator
+        sumdenum = sumdenum + denumerator
+    ...
 ```
 
-## The Impact of These Changes
-The addition of the ephys_data utility significantly improves the functionality and usability of the Blech Clust project. With the new utility, users can now access and utilize ephys data more efficiently, thereby accelerating their research processes.
+## Impact and Benefits
+The addition of `ephys_data` as a utility brings a number of benefits. First, it improves the project's usability by providing a defined way to handle electrophysiological data. It also aids in producing more accurate analysis results, thanks to the BAKS (Bayesian Adaptive Kernel Smoother) method implemented in the `BAKS.py` file for spike train data smoothing.
 
-The addition of usage instructions for ephys data in the roadmap also enhances the project’s documentation. This will be particularly beneficial for new users or users unfamiliar with electrophysiology data, as it provides a clear guide on how to use the newly added utility.
+Moreover, the changes made in the `region_spectrogram_plot.py` file, which is part of the `convenience_scripts`, will allow users to generate and plot spectrograms for specific regions more conveniently.
 
 ## Conclusion
-The inclusion of the ephys_data utility in the Blech Clust project marks a significant improvement in the project's capabilities. It not only expands the project's functionality but also improves its usability, making it a more versatile tool for researchers in the field of electrophysiology. The contributions made by abuzarmahmood and Abuzar Mahmood are truly instrumental in enhancing the project and will undoubtedly benefit its users.
-
-For an in-depth look at the changes, feel free to visit the actual pull request [here](https://github.com/katzlabbrandeis/blech_clust/pull/215).
+In conclusion, this pull request represents a significant stride forward in our project's development, making it more user-friendly and functional. We believe that the addition of the `ephys_data` utility will greatly enhance data analysis and visualization capabilities for all users. We're excited for you to try out these new features and look forward to your feedback!

@@ -1,47 +1,41 @@
-# No More Pipeline Chaos: Smart Dependency Management Arrives
+# Title: Streamlining Workflow Management in Blech_Clust: A Deep Dive into the PR released on August 15, 2024
 
-![Visual representation of 45 workflow management -- only run next step if dependencies have been fulfilled](https://oaidalleapiprodscus.blob.core.windows.net/private/org-hj3a7zwinu5hXuZCuU2WvRFJ/user-o4AWhhARg4pLttg3dlHwlTci/img-AzOd0PwUd6XWWyKAWYYuRiFS.png?st=2025-03-03T16%3A58%3A22Z&se=2025-03-03T18%3A58%3A22Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-03T02%3A18%3A55Z&ske=2025-03-04T02%3A18%3A55Z&sks=b&skv=2024-08-04&sig=X5d%2Bv2zl4FeuxsBvN4E%2Bjugse5ZACVSB4Hbe0vkhfeE%3D)
+![Visual representation of 45 workflow management -- only run next step if dependencies have been fulfilled](images/20250303151638_Create_a_technical_illustration_for_a_blog_post_ab.png)
 
 
-**Date: August 15, 2024**
+**Date: August 15, 2024**  
+**Contributors: Abuzar Mahmood, abuzarmahmood**  
+**PR: [https://github.com/katzlabbrandeis/blech_clust/pull/204](https://github.com/katzlabbrandeis/blech_clust/pull/204)**
 
-**Contributors: abuzarmahmood, Abuzar Mahmood**
+## Introduction
 
----
+The workflow management system was significantly improved in the PR released on August 15, 2024 titled, "45 workflow management -- only run next step if dependencies have been fulfilled." This PR aimed at enhancing the efficiency and reliability of the Blech_Clust pipeline.
 
-We've all been there - you kick off a pipeline run, walk away for coffee, and come back to find it crashed because step 3 ran before step 2 was ready. Frustrating, right? That's why I'm so excited about the update that landed in `Blech_clust` on August 15th.
+## Key Technical Aspects & Code Changes
 
-PR #204 introduces something I've wanted for ages: smart dependency checking that prevents pipeline steps from running until their prerequisites are complete. It's like having a traffic controller for your data processing that ensures everything happens in the right order.
+A total of 21 files were changed with 413 additions and 28 deletions, predominantly in Python and JSON. The key files affected were `blech_clust.py`, `blech_common_avg_reference.py`, `blech_exp_info.py`, `blech_make_arrays.py`, and `blech_make_psth.py`. 
 
-## Delving into the Technical Details
-
-The pull request introduced changes across a total of 21 files with 413 additions and 28 deletions. The main languages involved in these changes were Python and JSON. The key files affected were `blech_clust.py`, `blech_common_avg_reference.py`, `blech_exp_info.py`, `blech_make_arrays.py`, and `blech_make_psth.py`.
-
-In each of these files, a new function `pipeline_graph_check()` was added. This function, which resides in `utils.blech_utils`, checks if the dependencies for the current script have been successfully executed before allowing it to run. If the check passes, the function then logs the attempt and completion status of the script.
-
-An example of how this function is used can be seen in `blech_clust.py`:
+The core change was the introduction of a pipeline graph check in the workflow management system. This new feature ensures that the next step in the pipeline is only run if its dependencies have been fulfilled. Here is a snapshot of the code diff for `blech_clust.py`:
 
 ```diff
-@@ -32,6 +32,12 @@
- 
- metadata_handler = imp_metadata(sys.argv)
- dir_name = metadata_handler.dir_name
-+
-+# Perform pipeline graph check
-+this_pipeline_check = pipeline_graph_check(dir_name)
-+this_pipeline_check.check_previous(script_path)
-+this_pipeline_check.write_to_log(script_path, 'attempted')
-+
- print(f'Processing : {dir_name}')
- os.chdir(dir_name)
-```
+diff --git a/blech_clust.py b/blech_clust.py
+@@ -13,7 +13,7 @@
+ # Necessary blech_clust modules
+ from utils import read_file
+ from utils.qa_utils import channel_corr
+-from utils.blech_utils import entry_checker, imp_metadata
++from utils.blech_utils import entry_checker, imp_metadata, pipeline_graph_check
+ ```
+The pipeline graph check is performed by importing `pipeline_graph_check` from `utils.blech_utils`. The function `check_previous(script_path)` checks if the previous scripts in the pipeline have been successfully executed and `write_to_log(script_path, 'attempted')` logs the attempt of the current script. After successful completion of the script, `write_to_log(script_path, 'completed')` writes the success to the log.
 
-## The Impact of These Changes
+Similar changes were introduced in the other key files. 
 
-This update brings several notable benefits to the Blech_clust pipeline. The primary benefit is the enhancement of the pipeline's robustness. By ensuring that each step is only executed once its dependencies have been fulfilled, the likelihood of errors occurring due to an inconsistent execution order is drastically reduced.
+## Impact and Benefits
 
-Furthermore, by logging the attempt and completion status of each script, the update makes the pipeline's execution process more transparent. This transparency is especially beneficial for debugging, as it allows users to quickly identify which steps of the pipeline have been executed and which have not.
+These changes bring about a significant improvement in pipeline efficiency by preventing the pipeline from executing steps whose dependencies are not fulfilled. This minimizes the risk of errors and maximizes the use of computational resources. 
+
+In addition, the detailed logging of each step in the pipeline aids in debugging and tracking the progress of data processing. It allows users to easily identify any issues within the pipeline and fix them promptly. 
 
 ## Conclusion
 
-The enhancements introduced by pull request #204 significantly improve the workflow management system of the Blech_clust pipeline. These changes not only make the pipeline more robust and efficient but also improve its transparency, making it easier for users to track the execution process. This update is a testament to the continuous effort put into improving the Blech_clust pipeline, and we look forward to seeing more updates in the future that make electrophysiology data analysis even more efficient and reliable.
+This PR brings about a marked enhancement in the workflow management of the Blech_Clust pipeline. It significantly improves the efficiency and robustness of the pipeline, making it more user-friendly and reliable. As the Blech_Clust project continues to evolve, these changes provide a strong foundation for future improvements and additions.

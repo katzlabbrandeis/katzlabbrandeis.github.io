@@ -1,55 +1,40 @@
-# Dendrograms to the Rescue: Better Cluster Stability Visualization
+# Unveiling Clustering Stability: Hierarchical Clustering Plot for Better Assessment
 
-![Visual representation of Hierarchical clustering plot to better assess cluster stability](https://oaidalleapiprodscus.blob.core.windows.net/private/org-hj3a7zwinu5hXuZCuU2WvRFJ/user-o4AWhhARg4pLttg3dlHwlTci/img-X8oKnOCoW5BdYq27FRUfcyRJ.png?st=2025-03-03T16%3A56%3A52Z&se=2025-03-03T18%3A56%3A52Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-03T02%3A35%3A17Z&ske=2025-03-04T02%3A35%3A17Z&sks=b&skv=2024-08-04&sig=7ZUyjOl2FEjsTvj7zaD0zY05O5/rkyItMbhX8Ahp/gw%3D)
+![Visual representation of Hierarchical clustering plot to better assess cluster stability](images/20250303151434_Create_a_technical_illustration_for_a_blog_post_ab.png)
 
 
-**Date: January 11, 2024**
-
-**Contributors: abuzarmahmood, Abuzar Mahmood**
+**Date:** January 11, 2024  
+**Contributors:** abuzarmahmood, Abuzar Mahmood  
+**PR:** [https://github.com/katzlabbrandeis/blech_clust/pull/138](https://github.com/katzlabbrandeis/blech_clust/pull/138)
 
 ## Introduction
+The recent pull request to the 'blech_clust' project on GitHub brings a significant improvement to the assessment of cluster stability. The changes introduce a hierarchical clustering plot for each clustering solution on every electrode, allowing for clearer visualization of the underlying features of each cluster. By doing so, it provides an enhanced way to analyze the stability of the clusters.
 
-I've been wrestling with cluster stability issues in Blech Clust for months, and I'm excited to share a breakthrough that landed in the repo on January 11, 2024. Abuzar's pull request "Hierarchical clustering plot to better assess cluster stability" introduces a visualization technique that's been a game-changer for my workflow. If you've ever squinted at cluster plots trying to figure out if your groupings make sense, this update is for you.
+## Key Technical Aspects of the Changes
+Three files were primarily changed in this pull request: 'blech_clust.py', 'blech_post_process.py', and 'utils/cluster_stability.py'. The latter is a new file added to the project, containing the main functionality for hierarchical clustering.
 
-## Understanding the Changes
-
-The PR introduces a hierarchical clustering plot to the Blech Clust toolkit, allowing us to visualize the underlying features of each cluster more clearly. The code changes spanned across three files: `blech_clust.py`, `blech_post_process.py`, and a new file `utils/cluster_stability.py`.
-
-The changes in `blech_clust.py` involve adding an extra line to call the newly created `cluster_stability.py` script. This script is now part of the processing pipeline for each electrode's data.
+In 'blech_clust.py', a new line was added to write a command to the shell file to run the newly added 'cluster_stability.py' file:
 
 ```diff
-@@ -226,6 +226,7 @@
-     f.write(f'DATA_DIR={dir_name} \n')
-     f.write('ELECTRODE_NUM=$1 \n')
-     f.write('python $BLECH_DIR/blech_process.py $DATA_DIR $ELECTRODE_NUM \n')
 +    f.write('python $BLECH_DIR/utils/cluster_stability.py $DATA_DIR $ELECTRODE_NUM \n')
 ```
 
-In `blech_post_process.py`, a few import statements were removed as they are no longer needed:
+'blech_post_process.py' saw a few import statements being removed, suggesting a more streamlined use of libraries.
 
-```diff
-@@ -4,11 +4,7 @@
- import os
- import tables
- import numpy as np
--import easygui
--import ast
--import re
- import pylab as plt
--import matplotlib.image as mpimg
- from sklearn.mixture import GaussianMixture
- import argparse
- import pandas as pd
+The 'cluster_stability.py' file is the heart of these changes. Its key function is to perform hierarchical clustering on the given electrode's data and generate two subplots for each clustering solution: a dendrogram of the hierarchical clustering and the same plot but with data points colored by cluster.
+
+Here's an example of the code in 'cluster_stability.py':
+
+```python
+# Perform hierarchical clustering on spike features
+clust_dat = np.hstack((pca_slices, energy, amplitudes))
+feature_names = [f'PC{x}' for x in range(pca_slic
 ```
 
-The most important change lies in the newly created `utils/cluster_stability.py`, which contains the logic for generating hierarchical clustering plots. This script works by loading electrode data, loading cluster predictions from disk, and performing hierarchical clustering on spike features. It then generates two subplots for each clustering solution: a dendrogram of the hierarchical clustering, and the same plot but with data points colored by cluster.
+## Impact and Benefits of the Changes
+The introduction of a hierarchical clustering plot is a significant enhancement in the 'blech_clust' project. It allows users to better understand the stability of the clusters, which is crucial in many scientific fields, especially in neuroscience where this tool is primarily used.
 
-## Impact and Benefits
-
-The introduction of hierarchical clustering plots is a significant enhancement to the Blech Clust toolkit. This new feature provides a more intuitive way to visualize the stability of clusters. By creating a dendrogram, this change allows us to see the hierarchical relationships between clusters and the data points within them.
-
-Moreover, the colored plot is particularly useful for visualizing the distribution of data points across clusters, which can help in identifying any potential outliers or anomalies.
+The plots generated provide a visual and intuitive understanding of the data. The dendrogram displays the hierarchical relationship between clusters, while the colored plot helps distinguish between different clusters.
 
 ## Conclusion
-
-This pull request marks a significant step forward in the development of Blech Clust. The introduction of hierarchical clustering plots not only enhances the toolkit's visualization capabilities but also provides an invaluable tool for better assessing cluster stability. These advancements underscore the ongoing commitment to improving and refining the toolkit for the benefit of all users.
+The changes introduced in this pull request are an excellent example of how a visualization tool can enhance the understanding of complex data sets. By providing a more transparent view of the data clusters, researchers and scientists can better analyze and interpret their results, leading to more accurate conclusions. This improvement marks a significant step forward in the ongoing development of the 'blech_clust' project.

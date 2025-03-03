@@ -22,6 +22,7 @@ Our lab specializes in real-time analysis of ongoing neural activity, providing 
 - **Publications**: Access our research papers and findings
 - **Figure Gallery**: Explore visual representations of our discoveries
 - **Research Details**: Learn more about our ongoing projects
+- **[Blech_Clust](blech_clust/blech_clust_readme.md)**: Our specialized software for neural data analysis
 
 ### 📖 Recent Publications
 

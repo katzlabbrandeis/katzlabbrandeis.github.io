@@ -40,3 +40,7 @@ The software is open-source and available under the GPL-3.0 license, meaning any
 ## Getting started
 
 If you're a researcher interested in using Blech_Clust, check out the main [README](https://github.com/katzlabbrandeis/blech_clust) for detailed installation instructions and documentation on how to use the software.
+
+## Learn More
+
+Check out our [blog posts](blogs/blogs_main.md) for updates, tutorials, and technical deep dives on Blech_Clust.

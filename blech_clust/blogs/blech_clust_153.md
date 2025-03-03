@@ -1,4 +1,4 @@
-# Streamlining EMG Pipeline: A Dive into the GitHub PR #153 
+# EMG Pipeline Overhaul: Separating Outputs by Dig-In
 
 ![Visual representation of 148 separate emg outputs in hdf5 by dig in](https://oaidalleapiprodscus.blob.core.windows.net/private/org-hj3a7zwinu5hXuZCuU2WvRFJ/user-o4AWhhARg4pLttg3dlHwlTci/img-xWgnphtCnctLprayxZxXQeqm.png?st=2025-03-03T16%3A57%3A35Z&se=2025-03-03T18%3A57%3A35Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-03T02%3A13%3A36Z&ske=2025-03-04T02%3A13%3A36Z&sks=b&skv=2024-08-04&sig=w/GRL5UFcepoclyl/M/uAaQbT1jua1K7%2B7f%2BYHZpDAA%3D)
 
@@ -8,7 +8,7 @@
 
 ## Introduction
 
-The Electromyography (EMG) pipeline is a crucial part of the `blech_clust` project, a repository dedicated to the analysis of Electrophysiological data. On February 21, 2024, a significant pull request titled `148 separate emg outputs in hdf5 by dig in` was made by contributor Abuzar Mahmood that aimed to streamline the handling and processing of EMG data. 
+Anyone who's worked with the EMG pipeline in `blech_clust` knows it's a critical component for our electrophysiological data analysis. On February 21, 2024, Abuzar Mahmood submitted a game-changing pull request titled `148 separate emg outputs in hdf5 by dig in` that fundamentally rethinks how we handle EMG data processing.
 
 ## Key Technical Aspects
 

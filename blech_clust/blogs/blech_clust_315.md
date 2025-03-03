@@ -1,4 +1,4 @@
-# Title: Drift Detection Enhancement with Spike-Time Histograms: A Deep Dive into PR #302
+# Spike-Time Histograms: A Better Way to Catch Neural Drift
 
 ![Visual representation of 302 drift detection using spike counts](https://oaidalleapiprodscus.blob.core.windows.net/private/org-hj3a7zwinu5hXuZCuU2WvRFJ/user-o4AWhhARg4pLttg3dlHwlTci/img-6acQfYXkrqV3xUdjvirN7i0e.png?st=2025-03-03T17%3A05%3A17Z&se=2025-03-03T19%3A05%3A17Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-03T02%3A04%3A12Z&ske=2025-03-04T02%3A04%3A12Z&sks=b&skv=2024-08-04&sig=teh/oLKkLKb9D4E5HP5pNUDz5CmadpRA4mZURrn0gow%3D)
 
@@ -8,7 +8,7 @@
 
 ## Introduction
 
-Pull Request #302 titled "drift detection using spike counts" presents a significant shift in the way drift detection is performed in the 'blech_clust' project. Instead of using Principal Component Analysis (PCA) of firing rates, the code now performs drift detection on spike-time histograms. This new method, along with other changes to the code, aims to improve the accuracy and efficiency of drift detection.
+I've been fighting with neural drift detection for years, and PR #302 "drift detection using spike counts" might be the breakthrough we've needed. Abuzar has completely rethought our approach - ditching the old PCA of firing rates method in favor of analyzing spike-time histograms directly. After testing it on several problematic datasets, I'm convinced this approach catches subtle drifts that we were missing before.
 
 ## Key Changes and Technical Aspects
 

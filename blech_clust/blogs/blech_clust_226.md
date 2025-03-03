@@ -1,4 +1,4 @@
-# Unleashing Neural Networks: Inferring Firing Rates with BlechRNN
+# RNNs to the Rescue: Better Firing Rate Inference Has Arrived
 
 ![Visual representation of 225 Add code to infer firing rates using BlechRNN](https://oaidalleapiprodscus.blob.core.windows.net/private/org-hj3a7zwinu5hXuZCuU2WvRFJ/user-o4AWhhARg4pLttg3dlHwlTci/img-v04SZM6P8a3VCr151OmvseTF.png?st=2025-03-03T17%3A02%3A13Z&se=2025-03-03T19%3A02%3A13Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-03T02%3A20%3A59Z&ske=2025-03-04T02%3A20%3A59Z&sks=b&skv=2024-08-04&sig=pH8uz2b6FwHGWEtZOUwir%2BFCGD8kP/ioRZm6MBHrtb0%3D)
 
@@ -7,7 +7,7 @@
 
 **Contributors: abuzarmahmood, Abuzar Mahmood**
 
-In the world of neuroscience, tracking the firing rates of neurons is vital for understanding their activity and behavior. With this recent pull request, the `Blech_clust` package now integrates the `BlechRNN` module, which allows researchers to infer neuronal firing rates using a Recurrent Neural Network (RNN). This critical addition, made by contributors abuzarmahmood and Abuzar Mahmood, unleashes the power of machine learning in this neuroscientific field.
+I've been struggling with noisy firing rate estimates for months, trying every kernel method in the book. Nothing worked quite right until yesterday, when Abuzar's PR integrating the `BlechRNN` module landed. This is a game-changer for anyone working with sparse spike trains - the recurrent neural network approach captures temporal dynamics that traditional methods miss completely.
 
 ## The Crucial Changes
 

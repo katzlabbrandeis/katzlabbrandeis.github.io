@@ -1,4 +1,4 @@
-# Title: Elevating Data Analysis with Enhanced Correlation Testing in Blech Clust
+# Finding Bridged Channels Just Got Easier
 
 ![Visual representation of 80 test for bridges channels](https://oaidalleapiprodscus.blob.core.windows.net/private/org-hj3a7zwinu5hXuZCuU2WvRFJ/user-o4AWhhARg4pLttg3dlHwlTci/img-4VydGryOkUU13raN8XaYIAj0.png?st=2025-03-03T16%3A54%3A41Z&se=2025-03-03T18%3A54%3A41Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-03T02%3A11%3A01Z&ske=2025-03-04T02%3A11%3A01Z&sks=b&skv=2024-08-04&sig=%2BOu6soV62Ebd3p8e6u23B0G4oxsv7bsth6G4VqZ6za8%3D)
 
@@ -7,7 +7,7 @@
 **Contributors: Abuzar Mahmood, abuzarmahmood**
 
 ## Introduction
-In a world that revolves around data, it's crucial to have efficient and reliable tools for data analysis. This is particularly true in neuroscience, where large volumes of complex data are generated. The recent pull request titled "80 test for bridges channels" in the Blech Clust project brings significant improvements to the way we handle and analyze data, particularly when it comes to checking for bridged channels in raw data.
+If you've ever spent hours manually checking for bridged channels in your neural recordings, I've got good news. Abuzar's latest PR "80 test for bridges channels" just landed in Blech Clust, and it's a game-changer for our data quality checks. After struggling with this exact problem last month on a 128-channel recording, I wish I'd had this tool then!
 
 ## Technical Overview
 The pull request introduces a simple yet powerful addition to the `blech_clust.py` script. The changes allow the calculation of correlations between raw data, providing a robust method to check for bridged channels.

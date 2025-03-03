@@ -1,4 +1,4 @@
-# Catching the Drift: Enhancing Change Detection with ELBO 
+# ELBO: The Secret Weapon for Detecting Neural Population Drift
 
 ![Visual representation of 271 drift detection using changepoint on across trial pca](https://oaidalleapiprodscus.blob.core.windows.net/private/org-hj3a7zwinu5hXuZCuU2WvRFJ/user-o4AWhhARg4pLttg3dlHwlTci/img-Ha71SiUyS7jREM1lVfZxHnDO.png?st=2025-03-03T17%3A04%3A34Z&se=2025-03-03T19%3A04%3A34Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-03T02%3A05%3A16Z&ske=2025-03-04T02%3A05%3A16Z&sks=b&skv=2024-08-04&sig=lGiC%2BDxJnQSi/u/%2BBaA%2BvDEAT6mXaaleYfyF4fYd9eA%3D)
 
@@ -8,7 +8,7 @@
 **Contributors: abuzarmahmood, Abuzar Mahmood**
 
 ## Introduction
-This blog post is dedicated to discussing the exciting updates made to the `blech_clust` project by our contributors abuzarmahmood and Abuzar Mahmood. The pull request titled *271 drift detection using changepoint on across trial pca* is a significant improvement, enabling the project to detect changes in data more efficiently and accurately.
+Last month I lost a week of analysis time because I didn't catch a subtle drift in my neural recordings. If only I'd had Abuzar's latest contribution to `blech_clust`! PR #271 "drift detection using changepoint on across trial pca" introduces a powerful new approach using Evidence Lower BOund (ELBO) from variational inference that spots changes I was completely missing with our old methods.
 
 ## Purpose of the Changes
 The aim of these changes is to implement population drift detection using ELBO (Evidence Lower BOund), a concept in variational inference used to estimate the likelihood of observed data given a model. This is a powerful tool in machine learning, particularly in handling large datasets and high-dimensional models.

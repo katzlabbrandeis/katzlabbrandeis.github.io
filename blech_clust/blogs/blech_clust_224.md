@@ -1,4 +1,4 @@
-# Automated Testing and CI/CD Pipeline Integration: A Significant Step Forward
+# No More Broken Builds: CI/CD Comes to Blech Clust
 
 ![Visual representation of 8 add testing and cicd for repo](https://oaidalleapiprodscus.blob.core.windows.net/private/org-hj3a7zwinu5hXuZCuU2WvRFJ/user-o4AWhhARg4pLttg3dlHwlTci/img-trT2FJsRWwKxR8jSXVNMIjDd.png?st=2025-03-03T17%3A00%3A33Z&se=2025-03-03T19%3A00%3A33Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-03T02%3A16%3A39Z&ske=2025-03-04T02%3A16%3A39Z&sks=b&skv=2024-08-04&sig=p0NUxxpV9375fM8ezS7DoCYVC6zMginHSemtQG1ZisE%3D)
 
@@ -6,7 +6,7 @@
 **Date: September 13, 2024**
 **Contributors: GitHub, Abuzar Mahmood, abuzarmahmood**
 
-The pull request "8 add testing and cicd for repo" is a significant milestone in the development of the 'blech_clust' repository. It introduces an ingenious way to run the Prefect pipeline using GitHub Actions on a self-hosted runner, making the testing process more efficient and the CI/CD pipeline more robust. 
+Remember when we merged that "small fix" last month that broke spike sorting for everyone? Those days are officially over. PR #8 "add testing and cicd for repo" just landed, and it's a game-changer for our development workflow. Abuzar has set up a clever system that runs our Prefect pipeline automatically on every commit using GitHub Actions and a self-hosted runner.
 
 ## Introducing Automated Testing and CI/CD Pipeline Integration
 

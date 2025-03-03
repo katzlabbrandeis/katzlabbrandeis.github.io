@@ -1,4 +1,4 @@
-# Speeding Up Collision Calculations with a New Algorithm
+# From O(n²) to O(n): Collision Calculations Just Got Way Faster
 
 ![Visual representation of Add faster algorithm for calculating collisions](https://oaidalleapiprodscus.blob.core.windows.net/private/org-hj3a7zwinu5hXuZCuU2WvRFJ/user-o4AWhhARg4pLttg3dlHwlTci/img-q59RmCdCCkKyxddSi08WZRpC.png?st=2025-03-03T16%3A53%3A49Z&se=2025-03-03T18%3A53%3A49Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-03T02%3A19%3A49Z&ske=2025-03-04T02%3A19%3A49Z&sks=b&skv=2024-08-04&sig=K9PfNtlKKiYCoREE3Cdf3Q/CRa%2BZyKH7GX5x/iVVvUA%3D)
 
@@ -7,7 +7,7 @@
 **Contributors:** abuzarmahmood
 
 ## Introduction
-In the world of software development, efficiency is key. No one loves a system that lags or consumes unnecessary resources. That's why we are constantly looking for ways to make our code run faster and more efficiently. In this blog post, I will be discussing recent changes made to the `blech_clust` library, specifically the addition of a faster algorithm for calculating collisions.
+Last week I was running collision calculations on a dataset with 150+ units, and I literally had time to go get coffee, chat with colleagues, and come back before it finished. That's when I knew we needed a better algorithm. Today I'm excited to share the massive speed improvements we just merged into `blech_clust` that make this painful process lightning fast.
 
 ## The Changes
 Our previous algorithm for calculating collisions was functional, but not as efficient as we wanted. This inefficiency prompted a code overhaul, spearheaded by our valued contributor, abuzarmahmood. 

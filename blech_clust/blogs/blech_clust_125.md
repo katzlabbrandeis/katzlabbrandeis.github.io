@@ -1,4 +1,4 @@
-# Enhancing Quality Control in Blech Clust: A Look into a New Directory for Quality Control Scripts
+# Quality Control Gets an Upgrade: New Directory for QC Scripts in Blech Clust
 
 ![Visual representation of Create a directory for quality control scripts](https://oaidalleapiprodscus.blob.core.windows.net/private/org-hj3a7zwinu5hXuZCuU2WvRFJ/user-o4AWhhARg4pLttg3dlHwlTci/img-wE08XsAk64HjddkFPXa3fRqv.png?st=2025-03-03T16%3A55%3A32Z&se=2025-03-03T18%3A55%3A32Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-03T02%3A07%3A37Z&ske=2025-03-04T02%3A07%3A37Z&sks=b&skv=2024-08-04&sig=EoMbKs58E4yDBinglE%2Ba3EDTb7CbxGDqR3AwIw%2By6Kg%3D)
 
@@ -9,7 +9,7 @@
 
 ## Introduction
 
-A significant enhancement has been made to the [blech_clust](https://github.com/katzlabbrandeis/blech_clust) repository with the creation of a new directory for quality control scripts. This update, made on December 4th, 2023, allows for a more organized and efficient approach to handling quality control processes in the project. These include checking unit similarity, detecting bridging through correlations between raw voltages, and monitoring drift in selected unit activity.
+The [blech_clust](https://github.com/katzlabbrandeis/blech_clust) repository just got a major upgrade with the addition of a dedicated directory for quality control scripts. This change, implemented on December 4th, 2023, brings much-needed organization to our QC processes. Now we can more efficiently handle critical tasks like checking unit similarity, spotting bridged channels through voltage correlations, and tracking unit activity drift over time.
 
 ## Key Technical Aspects of The Changes
 

@@ -1,4 +1,4 @@
-# Revolutionizing Auto Clustering with PR 26 
+# Bayesian GMMs: The Auto-Clustering Upgrade We've Been Waiting For
 
 ![Visual representation of 26 auto clustering](https://oaidalleapiprodscus.blob.core.windows.net/private/org-hj3a7zwinu5hXuZCuU2WvRFJ/user-o4AWhhARg4pLttg3dlHwlTci/img-LFQqIlMNvt74b8e4dEDtpNrI.png?st=2025-03-03T16%3A56%3A11Z&se=2025-03-03T18%3A56%3A11Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-03-03T02%3A20%3A55Z&ske=2025-03-04T02%3A20%3A55Z&sks=b&skv=2024-08-04&sig=P4m9QqpwWMdW717doK%2BFrh4ajm8lWPnmWyrSySgfvug%3D)
 
@@ -8,7 +8,7 @@
 
 ## Introduction
 
-We are excited to announce a major update to our blech_clust repository. The newly merged pull request titled "26 auto clustering" is a game-changer in automatic data post-processing with significant enhancements in auto-sorting.
+I've been manually tweaking cluster parameters for years, and I'm thrilled to report that those days might finally be behind us. PR #26 "auto clustering" just landed in the blech_clust repo, and it's completely transformed how I approach post-processing. The secret sauce? Bayesian Gaussian Mixture Models that adapt to your data in ways regular GMMs just can't match.
 
 ## Key Technical Aspects
 

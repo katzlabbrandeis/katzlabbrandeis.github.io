@@ -4,6 +4,8 @@
 **Contributors: Abuzar Mahmood, Abuzar Mahmood (aider), abuzarmahmood (aider), abuzarmahmood, GitHub, Raymond**  
 **PR: [https://github.com/katzlabbrandeis/blech_clust/pull/350](https://github.com/katzlabbrandeis/blech_clust/pull/350)**
 
+![image](blech_clust/blogs/images/20250306150342_PR350_Create_a_technical_illustration_for_a_blog_post_ab.png)
+
 ## Introduction
 
 In today's fast-paced world of software development, automation isn't just a luxury—it's a necessity. On February 19, 2025, an exciting update hit the `blech_clust` repository: a pull request that introduces a conditional GitHub Action. This nifty feature kicks off an installation process whenever an 'install' tag is pushed. Crafted by Abuzar Mahmood, this update is a game-changer, aiming to take the hassle out of environment setup and dependency management by cutting down on manual labor and minimizing errors.

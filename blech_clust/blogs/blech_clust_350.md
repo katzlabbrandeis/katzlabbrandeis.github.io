@@ -4,7 +4,7 @@
 **Contributors: Abuzar Mahmood, Abuzar Mahmood (aider), abuzarmahmood (aider), abuzarmahmood, GitHub, Raymond**  
 **PR: [https://github.com/katzlabbrandeis/blech_clust/pull/350](https://github.com/katzlabbrandeis/blech_clust/pull/350)**
 
-![image](blech_clust/blogs/images/20250306150342_PR350_Create_a_technical_illustration_for_a_blog_post_ab.png)
+![image](images/20250306150342_PR350_Create_a_technical_illustration_for_a_blog_post_ab.png)
 
 ## Introduction
 

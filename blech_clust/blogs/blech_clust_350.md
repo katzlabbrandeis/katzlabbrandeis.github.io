@@ -1,4 +1,3 @@
-```markdown
 # Streamlining Installation Processes with Conditional GitHub Actions
 
 **Date: February 19, 2025**  
@@ -76,5 +75,5 @@ Introducing a conditional GitHub Action and a versatile Makefile is a big leap f
 
 By continuously refining our automation and processes, the project not only boosts its development workflow but also sets a gold standard for similar projects striving for efficiency and reliability.
 
-![GitHub Actions Workflow](https://github.com/katzlabbrandeis/blech_clust/workflows/python_workflow_test.yml/badge.svg)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/katzlabbrandeis/blech_clust/master.svg)](https://results.pre-commit.ci/latest/github/katzlabbrandeis/blech_clust/master)
 ```

@@ -4,11 +4,11 @@ Welcome to the Blech_Clust blog collection! Here you'll find technical articles,
 
 ## Latest Posts
 
+- [Streamlining Environment Setup with a Makefile: Enhancements to Blech_clust](blech_clust_365.md) - February 28, 2025
 - [Spike-Time Histograms: A Better Way to Catch Neural Drift](blech_clust_315.md) - January 21, 2025
 - [Test Dataset Creation Just Got Easier: PR #278 Breakdown](blech_clust_282.md) - December 12, 2024
 - [ELBO: The Secret Weapon for Detecting Neural Population Drift](blech_clust_281.md) - December 12, 2024
 - [Debugging Just Got 10x Easier with Comprehensive Logging](blech_clust_266.md) - December 05, 2024
-- [Legacy Intan Files? No Problem! PR 238 Has You Covered](blech_clust_240.md) - November 17, 2024
 
 ## Categories
 
@@ -25,6 +25,7 @@ Welcome to the Blech_Clust blog collection! Here you'll find technical articles,
 - [Finding Bridged Channels Just Got Easier](blech_clust_86.md) - August 09, 2023
 
 ### Infrastructure & Workflow
+- [Streamlining Environment Setup with a Makefile: Enhancements to Blech_clust](blech_clust_365.md) - February 28, 2025
 - [Test Dataset Creation Just Got Easier: PR #278 Breakdown](blech_clust_282.md) - December 12, 2024
 - [Debugging Just Got 10x Easier with Comprehensive Logging](blech_clust_266.md) - December 05, 2024
 - [Legacy Intan Files? No Problem! PR 238 Has You Covered](blech_clust_240.md) - November 17, 2024

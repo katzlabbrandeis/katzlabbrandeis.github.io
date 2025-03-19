@@ -1,3 +1,4 @@
+```markdown
 # Elevating Electrode Clustering with Bayesian Gaussian Mixture Models
 
 **Date: March 11, 2025**
@@ -5,8 +6,6 @@
 **Contributors: Abuzar Mahmood (aider), abuzarmahmood, pre-commit-ci[bot], GitHub, Abuzar Mahmood, abuzarmahmood (aider)**
 
 **PR: [https://github.com/katzlabbrandeis/blech_clust/pull/401](https://github.com/katzlabbrandeis/blech_clust/pull/401)**
-
-![Additional visual context](images/52_head.png)
 
 ## Introduction
 
@@ -74,3 +73,5 @@ The inclusion of Bayesian Gaussian Mixture models is a major leap forward for th
 
 With these advances, the `blech_clust` project is positioned to lead the charge in electrode data analysis, equipping researchers with powerful tools to uncover new insights from their data.
 ```
+
+![Bayesian Gaussian Mixture Model Example](https://example.com/path-to-image)

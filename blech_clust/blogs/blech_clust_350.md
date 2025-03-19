@@ -1,12 +1,12 @@
 # Streamlining Installation Processes with Conditional GitHub Actions
 
 **Date: February 19, 2025**  
-**Contributors: Abuzar Mahmood, Abuzar Mahmood (aider), abuzarmahmood (aider), abuzarmahmood, GitHub, Raymond**  
+**Contributors: GitHub, Abuzar Mahmood, Abuzar Mahmood (aider), Raymond, abuzarmahmood, abuzarmahmood (aider)**  
 **PR: [https://github.com/katzlabbrandeis/blech_clust/pull/350](https://github.com/katzlabbrandeis/blech_clust/pull/350)**
 
-![image](images/20250306150342_PR350_Create_a_technical_illustration_for_a_blog_post_ab.png)
-
 ## Introduction
+
+![GitHub Actions](https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png)
 
 In today's fast-paced world of software development, automation isn't just a luxury—it's a necessity. On February 19, 2025, an exciting update hit the `blech_clust` repository: a pull request that introduces a conditional GitHub Action. This nifty feature kicks off an installation process whenever an 'install' tag is pushed. Crafted by Abuzar Mahmood, this update is a game-changer, aiming to take the hassle out of environment setup and dependency management by cutting down on manual labor and minimizing errors.
 
@@ -15,12 +15,12 @@ In today's fast-paced world of software development, automation isn't just a lux
 ### Introduction of a Makefile
 
 One standout feature of this update is the addition of a `Makefile`. This file is like the Swiss Army knife for setting up project environments and installing dependencies. We've got several handy targets here:
-- **`base`**: Lays the groundwork with `conda`.
-- **`emg`, `neurec`, `blechrnn`**: Installs specific project components.
-- **`prefect`**: Gets Prefect, a workflow management system, up and running.
-- **`patch`**: Takes care of applying necessary patches to dependencies.
+- **`base`**: Lays the groundwork with `conda`, ensuring you have all the foundational tools and libraries.
+- **`emg`, `neurec`, `blechrnn`**: Installs specific project components tailored to different aspects of the project, allowing for modular and flexible installation.
+- **`prefect`**: Gets Prefect, a workflow management system, up and running to ensure your workflow orchestration is smooth.
+- **`patch`**: Takes care of applying necessary patches to dependencies, keeping everything up to date and compatible.
 
-These targets make the installation process a breeze, turning complex commands into simple, user-friendly make commands.
+These targets make the installation process a breeze, turning complex commands into simple, user-friendly make commands. Here's a glimpse of what the Makefile looks like:
 
 ```makefile
 base: 
@@ -34,7 +34,7 @@ emg:
 
 ### Conditional GitHub Action
 
-We've also beefed up the workflow defined in `.github/workflows/python_workflow_test.yml`. Now, there's a conditional job that only fires up when an 'install' tag is present. This clever setup helps conserve resources by running automated installation processes only when needed, ensuring we don't waste time or computing power.
+We've also beefed up the workflow defined in `.github/workflows/python_workflow_test.yml`. Now, there's a conditional job that only fires up when an 'install' tag is present. This clever setup helps conserve resources by running automated installation processes only when needed, ensuring we don't waste time or computing power. Here's a snippet of the workflow configuration:
 
 ```yaml
 Install:
@@ -54,7 +54,7 @@ This PR isn't just about fancy workflows; it's also about getting dependencies i
 
 The GitHub Actions workflow is now sharper than ever:
 - **Spike-Only and EMG-Only Jobs**: These jobs are like well-trained specialists, running tests specific to each project component without getting in each other's way.
-- **Concurrency Control**: Keeps things running smoothly even when multiple installations or tests are in the queue.
+- **Concurrency Control**: Keeps things running smoothly even when multiple installations or tests are in the queue, preventing race conditions and ensuring that resources are used efficiently.
 
 ## Impact and Benefits
 
@@ -78,4 +78,3 @@ Introducing a conditional GitHub Action and a versatile Makefile is a big leap f
 By continuously refining our automation and processes, the project not only boosts its development workflow but also sets a gold standard for similar projects striving for efficiency and reliability.
 
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/katzlabbrandeis/blech_clust/master.svg)](https://results.pre-commit.ci/latest/github/katzlabbrandeis/blech_clust/master)
-```

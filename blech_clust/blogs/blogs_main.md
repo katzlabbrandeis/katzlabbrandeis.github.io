@@ -4,13 +4,16 @@ Welcome to the Blech_Clust blog collection! Here you'll find technical articles,
 
 ## Latest Posts
 
+- [Enhancing Optogenetic Experimentation: Multiple Laser Conditions in Blech Exp Info](blech_clust_400.md) - March 11, 2025
 - [Elevating Electrode Clustering with Bayesian Gaussian Mixture Models](blech_clust_52.md) - March 11, 2025
 - [Streamlining Installation Processes with Conditional GitHub Actions](blech_clust_350.md) - February 19, 2025
 - [Streamlining Environment Setup with a Makefile: Enhancements to Blech_clust](blech_clust_365.md) - February 28, 2025
 - [Spike-Time Histograms: A Better Way to Catch Neural Drift](blech_clust_315.md) - January 21, 2025
-- [Test Dataset Creation Just Got Easier: PR #278 Breakdown](blech_clust_282.md) - December 12, 2024
 
 ## Categories
+
+### Optogenetics & Experimental Design
+- [Enhancing Optogenetic Experimentation: Multiple Laser Conditions in Blech Exp Info](blech_clust_400.md) - March 11, 2025
 
 ### Algorithm Improvements
 - [Spike-Time Histograms: A Better Way to Catch Neural Drift](blech_clust_315.md) - January 21, 2025

@@ -4,11 +4,11 @@ Welcome to the Blech_Clust blog collection! Here you'll find technical articles,
 
 ## Latest Posts
 
+- [Enhancing Pipeline Efficiency: Introducing S3 Upload Functionality for Test Outputs](blech_clust_358.md) - February 23, 2025
 - [Streamlining Installation Processes with Conditional GitHub Actions](blech_clust_350.md) - February 19, 2025
 - [Streamlining Environment Setup with a Makefile: Enhancements to Blech_clust](blech_clust_365.md) - February 28, 2025
 - [Spike-Time Histograms: A Better Way to Catch Neural Drift](blech_clust_315.md) - January 21, 2025
 - [Test Dataset Creation Just Got Easier: PR #278 Breakdown](blech_clust_282.md) - December 12, 2024
-- [ELBO: The Secret Weapon for Detecting Neural Population Drift](blech_clust_281.md) - December 12, 2024
 
 ## Categories
 
@@ -27,6 +27,7 @@ Welcome to the Blech_Clust blog collection! Here you'll find technical articles,
 - [Bridging the Gap: Enhancing Channel Correlations with Blech Clust](blech_clust_86.md) - August 09, 2023
 
 ### Infrastructure & Workflow
+- [Enhancing Pipeline Efficiency: Introducing S3 Upload Functionality for Test Outputs](blech_clust_358.md) - February 23, 2025
 - [Streamlining Installation Processes with Conditional GitHub Actions](blech_clust_350.md) - February 19, 2025
 - [Streamlining Environment Setup with a Makefile: Enhancements to Blech_clust](blech_clust_365.md) - February 28, 2025
 - [A Revolutionary Framework for Test Dataset Creation: A Deep Dive into PR #282](blech_clust_282.md) - December 12, 2024

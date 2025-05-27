@@ -1,4 +1,3 @@
-```markdown
 # Revolutionizing Dataset Analysis with Automated Grading
 
 ![Technical illustration showing data grading system with code snippets, Python logo, and data visualization elements](images/20250527171602_PR474_Create_a_technical_illustration_for_a_blog_post_ab.png)
@@ -81,4 +80,3 @@ By continuously refining how we validate data, the blech_clust project is set to
 ---
 
 For more details, check out the [pull request](https://github.com/katzlabbrandeis/blech_clust/pull/474) on GitHub.
-```

@@ -9,13 +9,13 @@ Welcome to the Blech_Clust blog collection! Here you'll find technical articles,
 - [Streamlining Development with DevContainer Configuration](blech_clust_569.md) - September 23, 2025
 - [Enhanced User Experience: Graceful Handling of Missing Sampling Rate Files](blech_clust_542.md) - August 01, 2025
 - [Example Workflows for Ephys Data: Bridging the Gap Between Code and Application](blech_clust_359.md) - July 09, 2025
-- [Revolutionizing Dataset Analysis with Automated Grading](blech_clust_474.md) - May 27, 2025
 - [At-a-Glance Dataset Insights: Introducing the Data Summary Script](blech_clust_405.md) - May 28, 2025
-- [Speed Meets Efficiency: Parallel Processing for Electrode Data](blech_clust_256.md) - November 27, 2024
+- [Revolutionizing Dataset Analysis with Automated Grading](blech_clust_474.md) - May 27, 2025
+- [Streamlining Environment Setup with a Makefile: Enhancements to Blech_clust](blech_clust_365.md) - February 28, 2025
 - [Enhancing Pipeline Efficiency: Introducing S3 Upload Functionality for Test Outputs](blech_clust_358.md) - February 23, 2025
 - [Streamlining Installation Processes with Conditional GitHub Actions](blech_clust_350.md) - February 19, 2025
-- [Streamlining Environment Setup with a Makefile: Enhancements to Blech_clust](blech_clust_365.md) - February 28, 2025
 - [Spike-Time Histograms: A Better Way to Catch Neural Drift](blech_clust_315.md) - January 21, 2025
+- [Speed Meets Efficiency: Parallel Processing for Electrode Data](blech_clust_256.md) - November 27, 2024
 
 ## Categories
 
@@ -41,12 +41,12 @@ Welcome to the Blech_Clust blog collection! Here you'll find technical articles,
 - [Enhanced User Experience: Graceful Handling of Missing Sampling Rate Files](blech_clust_542.md) - August 01, 2025
 - [Example Workflows for Ephys Data: Bridging the Gap Between Code and Application](blech_clust_359.md) - July 09, 2025
 - [At-a-Glance Dataset Insights: Introducing the Data Summary Script](blech_clust_405.md) - May 28, 2025
-- [Speed Meets Efficiency: Parallel Processing for Electrode Data](blech_clust_256.md) - November 27, 2024
+- [Streamlining Environment Setup with a Makefile: Enhancements to Blech_clust](blech_clust_365.md) - February 28, 2025
 - [Enhancing Pipeline Efficiency: Introducing S3 Upload Functionality for Test Outputs](blech_clust_358.md) - February 23, 2025
 - [Streamlining Installation Processes with Conditional GitHub Actions](blech_clust_350.md) - February 19, 2025
-- [Streamlining Environment Setup with a Makefile: Enhancements to Blech_clust](blech_clust_365.md) - February 28, 2025
 - [A Revolutionary Framework for Test Dataset Creation: A Deep Dive into PR #282](blech_clust_282.md) - December 12, 2024
 - [Boosting the Clarity of Blech Clust Scripts with Logging](blech_clust_266.md) - December 05, 2024
+- [Speed Meets Efficiency: Parallel Processing for Electrode Data](blech_clust_256.md) - November 27, 2024
 - [Enhancing CI/CD with Prefect and GitHub Actions: A Deep Dive into Blech Clust's New Workflow](blech_clust_224.md) - September 13, 2024
 - [Boosting Ephys Data Analysis with the New Utility Addition](blech_clust_215.md) - August 29, 2024
 - [Streamlining EMG Dependencies Installation: A Dive into Python-Only Setup](blech_clust_211.md) - August 24, 2024

@@ -6,7 +6,6 @@ Welcome to the Blech_Clust blog collection! Here you'll find technical articles,
 
 - [Building Confidence: Comprehensive Pytest Test Suite for Ephys Data Module](blech_clust_576.md) - September 26, 2025
 - [Multi-Platform Installation Testing: Ensuring Compatibility Across Linux Distributions](blech_clust_578.md) - September 26, 2025
-- [Streamlining Development with DevContainer Configuration](blech_clust_569.md) - September 23, 2025
 - [Enhanced User Experience: Graceful Handling of Missing Sampling Rate Files](blech_clust_542.md) - August 01, 2025
 - [Example Workflows for Ephys Data: Bridging the Gap Between Code and Application](blech_clust_359.md) - July 09, 2025
 - [At-a-Glance Dataset Insights: Introducing the Data Summary Script](blech_clust_405.md) - May 28, 2025

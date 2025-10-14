@@ -4,7 +4,14 @@ Welcome to the Blech_Clust blog collection! Here you'll find technical articles,
 
 ## Latest Posts
 
+- [Building Confidence: Comprehensive Pytest Test Suite for Ephys Data Module](blech_clust_576.md) - September 26, 2025
+- [Multi-Platform Installation Testing: Ensuring Compatibility Across Linux Distributions](blech_clust_578.md) - September 26, 2025
+- [Streamlining Development with DevContainer Configuration](blech_clust_569.md) - September 23, 2025
+- [Enhanced User Experience: Graceful Handling of Missing Sampling Rate Files](blech_clust_542.md) - August 01, 2025
+- [Example Workflows for Ephys Data: Bridging the Gap Between Code and Application](blech_clust_359.md) - July 09, 2025
 - [Revolutionizing Dataset Analysis with Automated Grading](blech_clust_474.md) - May 27, 2025
+- [At-a-Glance Dataset Insights: Introducing the Data Summary Script](blech_clust_405.md) - May 28, 2025
+- [Speed Meets Efficiency: Parallel Processing for Electrode Data](blech_clust_256.md) - November 27, 2024
 - [Enhancing Pipeline Efficiency: Introducing S3 Upload Functionality for Test Outputs](blech_clust_358.md) - February 23, 2025
 - [Streamlining Installation Processes with Conditional GitHub Actions](blech_clust_350.md) - February 19, 2025
 - [Streamlining Environment Setup with a Makefile: Enhancements to Blech_clust](blech_clust_365.md) - February 28, 2025
@@ -28,6 +35,13 @@ Welcome to the Blech_Clust blog collection! Here you'll find technical articles,
 - [Bridging the Gap: Enhancing Channel Correlations with Blech Clust](blech_clust_86.md) - August 09, 2023
 
 ### Infrastructure & Workflow
+- [Building Confidence: Comprehensive Pytest Test Suite for Ephys Data Module](blech_clust_576.md) - September 26, 2025
+- [Multi-Platform Installation Testing: Ensuring Compatibility Across Linux Distributions](blech_clust_578.md) - September 26, 2025
+- [Streamlining Development with DevContainer Configuration](blech_clust_569.md) - September 23, 2025
+- [Enhanced User Experience: Graceful Handling of Missing Sampling Rate Files](blech_clust_542.md) - August 01, 2025
+- [Example Workflows for Ephys Data: Bridging the Gap Between Code and Application](blech_clust_359.md) - July 09, 2025
+- [At-a-Glance Dataset Insights: Introducing the Data Summary Script](blech_clust_405.md) - May 28, 2025
+- [Speed Meets Efficiency: Parallel Processing for Electrode Data](blech_clust_256.md) - November 27, 2024
 - [Enhancing Pipeline Efficiency: Introducing S3 Upload Functionality for Test Outputs](blech_clust_358.md) - February 23, 2025
 - [Streamlining Installation Processes with Conditional GitHub Actions](blech_clust_350.md) - February 19, 2025
 - [Streamlining Environment Setup with a Makefile: Enhancements to Blech_clust](blech_clust_365.md) - February 28, 2025

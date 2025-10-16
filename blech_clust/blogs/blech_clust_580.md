@@ -1,7 +1,7 @@
 ```markdown
 # Streamlining Python Package Management: A Fresh Take
 
-![package management](images/20250319064755_PR400_Create_a_technical_illustration_for_a_blog_post_ab.png)
+![package management](images/20251016090451_PR580_Create_a_technical_illustration_for_a_blog_post_ab.png)
 
 **Date: September 26, 2025**  
 **Contributors: abuzarmahmood, pre-commit-ci[bot], GitHub, Abuzar Mahmood**  

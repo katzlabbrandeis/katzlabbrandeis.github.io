@@ -1,4 +1,3 @@
-```markdown
 # Streamlining Python Package Management: A Fresh Take
 
 ![package management](images/20251016090451_PR580_Create_a_technical_illustration_for_a_blog_post_ab.png)
@@ -72,4 +71,3 @@ In a nutshell, these changes tackle the common headaches in software development
 *Image: Illustration of dependency management consolidation using pip.*
 
 For more insights on dependency management, check out [Python's official guide on dependency management](https://packaging.python.org/guides/tool-recommendations/).
-```

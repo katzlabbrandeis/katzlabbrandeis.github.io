@@ -4,6 +4,7 @@ Welcome to the Blech_Clust blog collection! Here you'll find technical articles,
 
 ## Latest Posts
 
+- [Streamlining Python Package Management: A Fresh Take](blech_clust_580.md) - September 26, 2025
 - [Revolutionizing Dataset Analysis with Automated Grading](blech_clust_474.md) - May 27, 2025
 - [Enhancing Pipeline Efficiency: Introducing S3 Upload Functionality for Test Outputs](blech_clust_358.md) - February 23, 2025
 - [Streamlining Installation Processes with Conditional GitHub Actions](blech_clust_350.md) - February 19, 2025
@@ -28,6 +29,7 @@ Welcome to the Blech_Clust blog collection! Here you'll find technical articles,
 - [Bridging the Gap: Enhancing Channel Correlations with Blech Clust](blech_clust_86.md) - August 09, 2023
 
 ### Infrastructure & Workflow
+- [Streamlining Python Package Management: A Fresh Take](blech_clust_580.md) - September 26, 2025
 - [Enhancing Pipeline Efficiency: Introducing S3 Upload Functionality for Test Outputs](blech_clust_358.md) - February 23, 2025
 - [Streamlining Installation Processes with Conditional GitHub Actions](blech_clust_350.md) - February 19, 2025
 - [Streamlining Environment Setup with a Makefile: Enhancements to Blech_clust](blech_clust_365.md) - February 28, 2025

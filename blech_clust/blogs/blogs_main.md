@@ -4,6 +4,7 @@ Welcome to the Blech_Clust blog collection! Here you'll find technical articles,
 
 ## Latest Posts
 
+- [Setting Up a Pip-Installable Package for Blech Clust](blech_clust_603.md) - October 16, 2025
 - [Streamlining Python Package Management: A Fresh Take](blech_clust_580.md) - September 26, 2025
 - [Building Confidence: Comprehensive Pytest Test Suite for Ephys Data Module](blech_clust_576.md) - September 26, 2025
 - [Multi-Platform Installation Testing: Ensuring Compatibility Across Linux Distributions](blech_clust_578.md) - September 26, 2025
@@ -35,6 +36,7 @@ Welcome to the Blech_Clust blog collection! Here you'll find technical articles,
 - [Bridging the Gap: Enhancing Channel Correlations with Blech Clust](blech_clust_86.md) - August 09, 2023
 
 ### Infrastructure & Workflow
+- [Setting Up a Pip-Installable Package for Blech Clust](blech_clust_603.md) - October 16, 2025
 - [Streamlining Python Package Management: A Fresh Take](blech_clust_580.md) - September 26, 2025
 - [Building Confidence: Comprehensive Pytest Test Suite for Ephys Data Module](blech_clust_576.md) - September 26, 2025
 - [Multi-Platform Installation Testing: Ensuring Compatibility Across Linux Distributions](blech_clust_578.md) - September 26, 2025

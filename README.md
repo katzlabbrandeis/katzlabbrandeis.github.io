@@ -1,42 +1,45 @@
-# 🧠 Welcome to the Katz Lab
+# Katz Lab Website
 
-## Decoding Neural Ensemble Dynamics in Real-Time
+This is the website for the Katz Lab at Brandeis University.
 
-The Katz Lab at Brandeis University is at the forefront of understanding how our brains process sensory information and control movement. Using cutting-edge techniques, we investigate neural ensemble dynamics in awake rodents to unlock the mysteries of sensori-motor processes.
+## About
 
-### 🔬 Our Research Approach
+The Katz Lab studies neural ensemble dynamics of sensori-motor processes in awake rodents, combining behavior, multi-neuronal electrophysiology, complex analysis and modeling, pharmacology and optogenetics to probe ongoing spiking activity in real-time.
 
-We combine multiple innovative methodologies:
-- Behavioral analysis
-- Multi-neuronal electrophysiology
-- Complex data analysis and modeling
-- Pharmacological interventions
-- Optogenetic techniques
+## Development
 
-### 🎯 What Makes Us Unique
+This website is built using Jekyll and is based on the [Allan Lab template](https://github.com/mpa139/allanlab).
 
-Our lab specializes in real-time analysis of ongoing neural activity, providing unprecedented insights into how the brain processes information and controls behavior in living organisms.
+### Local Development
 
-### 📚 Resources
+To run the site locally:
 
-- **Publications**: Access our research papers and findings
-- **Figure Gallery**: Explore visual representations of our discoveries
-- **Research Details**: Learn more about our ongoing projects
-- **[Blech_Clust](blech_clust/blech_clust_readme.md)**: Our specialized software for neural data analysis
+```bash
+sudo apt update
+sudo apt install ruby-full rubygems
 
-### 📖 Recent Publications
+gem install bundler --user-install
 
-1. [LiCl-induced sickness modulates rat gustatory cortical responses](https://pubmed.ncbi.nlm.nih.gov/35877759/)
-2. [The function of groups of neurons changes from moment to moment](https://pubmed.ncbi.nlm.nih.gov/35372737/)
-3. [Cortical taste processing evolves through benign taste exposures](https://pubmed.ncbi.nlm.nih.gov/35049318/)
-4. [A model of naturalistic decision making in preference tests](https://pubmed.ncbi.nlm.nih.gov/34555012/)
-5. [Perturbation of amygdala-cortical projections reduces ensemble coherence of palatability coding in gustatory cortex](https://pubmed.ncbi.nlm.nih.gov/34018924/)
+bundle install
+bundle exec jekyll serve
+```
 
-[View all publications on PubMed](https://pubmed.ncbi.nlm.nih.gov?sort=date&term=Donald%20Katz)
+The site will be available at `http://localhost:4000`.
 
-### 🤝 Connect With Us
+### Deployment
 
-Located in Waltham, Massachusetts at Brandeis University, we're always eager to collaborate and share our findings with the scientific community.
+The site is automatically deployed to GitHub Pages via GitHub Actions when changes are pushed to the main branch.
 
----
-*Visit our [website](https://katzlab.squarespace.com/) to learn more about our team and research.*
+## Structure
+
+- `_data/`: Data files for team members, publications, news, etc.
+- `_includes/`: Reusable HTML components
+- `_layouts/`: Page layouts
+- `_pages/`: Main content pages
+- `images/`: Images and photos
+- `blech_clust/`: Neural data analysis software documentation
+
+## Credits
+
+Website template from [Allan Lab](https://github.com/mpa139/allanlab).
+Code released under the MIT License.

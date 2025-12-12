@@ -1,0 +1,73 @@
+- name: Don Katz
+  photo: don_katz.jpg
+  info: Principal Investigator, Professor of Psychology
+  email: dbkatz@brandeis.edu
+  number_educ: 1
+  education1: Faculty in the psychology department, conducts research in collaboration with an ever-changing cast of post-doctoral researchers, graduate, and undergraduate students.
+
+- name: Jian-You Lin
+  photo: jy_lin.jpg
+  info: Postdoctoral Researcher
+  email: jylin@brandeis.edu
+  number_educ: 0
+
+- name: Abuzar Mahmood
+  photo: abuzar_mahmood.jpg
+  info: Postdoctoral Researcher
+  email: amahmood@brandeis.edu
+  number_educ: 0
+
+- name: Martin Raymond
+  photo: martin_raymond.jpg
+  info: Postdoctoral Researcher
+  email: martinraymond@brandeis.edu
+  number_educ: 0
+
+- name: Daniel Svedberg
+  photo: daniel_svedberg.jpg
+  info: Graduate Student
+  email: dsvedberg@brandeis.edu
+  number_educ: 0
+
+- name: Hannah Germaine
+  photo: hannah_germaine.jpg
+  info: Graduate Student
+  email: hgermaine@brandeis.edu
+  number_educ: 0
+
+- name: Kathleen Maigler
+  photo: kathleen_maigler.jpg
+  info: Graduate Student
+  email: kmaigler@brandeis.edu
+  number_educ: 0
+
+- name: Natasha Baas-Thomas
+  photo: natasha_baas.jpg
+  info: Graduate Student
+  email: nbaasthomas@brandeis.edu
+  number_educ: 0
+
+- name: Christina Mazzio
+  photo: christina_mazzio.jpg
+  info: Graduate Student
+  email: cmazzio@brandeis.edu
+  number_educ: 0
+
+- name: Thomas Gray
+  photo: thomas_gray.jpg
+  info: Graduate Student
+  email: tgray@brandeis.edu
+  number_educ: 1
+  education1: <a href="https://thomasrgray.github.io/web">Personal Website</a>
+
+- name: Julia Corman
+  photo: julia_corman.jpg
+  info: Graduate Student
+  email: juliacorman@brandeis.edu
+  number_educ: 0
+
+- name: Emma Barash
+  photo: emma_barash.jpg
+  info: Lab Manager
+  email: emmalala@brandeis.edu
+  number_educ: 0

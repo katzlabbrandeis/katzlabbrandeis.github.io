@@ -1,0 +1,53 @@
+- name: Linnea Herzog, PhD
+  photo: linnea_herzog.jpg
+  duration: Graduate Student
+  info: lherzog@brandeis.edu
+  email: lherzog@brandeis.edu
+
+- name: Veronica Lee Flores, PhD
+  photo: veronica_flores.jpg
+  duration: Graduate Student
+  info: veronica.flores@furman.edu
+  email: veronica.flores@furman.edu
+
+- name: Roshan Nanu, PhD
+  photo: roshan_nanu.jpg
+  duration: Graduate Student
+  info: roshan@aitomatic.com
+  email: roshan@aitomatic.com
+
+- name: Bradly Stone, PhD
+  photo: bradly_stone.jpg
+  duration: Graduate Student
+  info: bradly.stone@tufts.edu
+  email: bradly.stone@tufts.edu
+
+- name: Narendra Mukherjee, PhD
+  photo: narendra_mukherjee.jpg
+  duration: Graduate Student
+  info: <a href="https://twitter.com/spokeyspikes">@spokeyspikes</a>
+  email: 
+
+- name: Anan Moran, PhD
+  photo: anan_moran.jpg
+  duration: Postdoctoral Researcher
+  info: <a href="http://ananmoranlab.tau.ac.il?page_id=12">Lab Website</a>
+  email: anan@tauex.tau.ac.il
+
+- name: Joost Maier, PhD
+  photo: joost_maier.jpg
+  duration: Postdoctoral Researcher
+  info: <a href="https://school.wakehealth.edu/research/labs/maier-lab">Lab Website</a>
+  email: jmaier@wakehealth.edu
+
+- name: Alfredo Fontanini, PhD
+  photo: alfredo_fontanini.jpg
+  duration: Postdoctoral Researcher
+  info: <a href="https://www.fontaninilab.org">Lab Website</a>
+  email: alfredo.fontanini@stonybrook.edu
+
+- name: David Levitan, PhD
+  photo: david_levitan.jpg
+  duration: Postdoctoral Researcher
+  info: 
+  email: david.levitan1@mail.huji.ac.il

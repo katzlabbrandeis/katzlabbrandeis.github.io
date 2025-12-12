@@ -15,6 +15,11 @@ This website is built using Jekyll and is based on the [Allan Lab template](http
 To run the site locally:
 
 ```bash
+sudo apt update
+sudo apt install ruby-full rubygems
+
+gem install bundler --user-install
+
 bundle install
 bundle exec jekyll serve
 ```
